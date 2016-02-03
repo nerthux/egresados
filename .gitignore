@@ -1,0 +1,12 @@
+/bin/*
+/config//
+/vendor/*
+/config/app.php
+/tmp/*
+/logs/*
+/composer.phar
+/tests/*
+/composer.lock
+/phpunit.xml.dist
+/plugins/*
+/index.php
