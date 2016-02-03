@@ -1,12 +1,27 @@
+<<<<<<< HEAD
 /bin/*
 /config//
+=======
+# CakePHP 3
+
+>>>>>>> 1709435bb4469adebf3174cc6a6ed19f99047d20
 /vendor/*
 /config/app.php
 /tmp/*
 /logs/*
+<<<<<<< HEAD
 /composer.phar
 /tests/*
 /composer.lock
 /phpunit.xml.dist
 /plugins/*
 /index.php
+=======
+
+# CakePHP 2
+
+/app/tmp/*
+/app/Config/core.php
+/app/Config/database.php
+/vendors/*
+>>>>>>> 1709435bb4469adebf3174cc6a6ed19f99047d20
