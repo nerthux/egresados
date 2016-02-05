@@ -16,9 +16,11 @@
                 <td><?= h($career->name) ?></td>
                 <td><?= $career->has('department') ? $this->Html->link($career->department->name, ['controller' => 'Departments', 'action' => 'view', $career->department->id]) : '' ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $career->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $career->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $career->id], ['confirm' => __('Are you sure you want to delete # {0}?', $career->id)]) ?>
+                    <?= $this->Html->link($this->Html->icon('file'), ['action' => 'view', $career->id], ['escape' => false]) ?>
+                    <?= $this->Html->link($this->Html->icon('edit'), ['action' => 'edit', $career->id], ['escape' => false]) ?>
+                    <?= $this->Form->postLink($this->Html->icon('erase'), ['action' => 'delete', $career->id], ['confirm' => __('Are you sure you want to delete # {0}?',
+                                                                                                                $career->id), 'escape' => false]) ?>
+
                 </td>
             </tr>
             <?php endforeach; ?>

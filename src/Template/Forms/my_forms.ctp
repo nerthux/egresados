@@ -16,10 +16,11 @@
                 <td><?= h($form->created) ?></td>
                 <td><?= h($form->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $form->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $form->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $form->id], ['confirm' => __('Are you sure you want to delete # {0}?', $form->id)]) ?>
-                </td>
+                    <?= $this->Html->link($this->Html->icon('file'), ['action' => 'view', $form->id], ['escape' => false]) ?>
+                    <?= $this->Html->link($this->Html->icon('edit'), ['action' => 'edit', $form->id], ['escape' => false]) ?>
+                    <?= $this->Form->postLink($this->Html->icon('erase'), ['action' => 'delete', $form->id], ['confirm' => __('Are you sure you want to delete # {0}?', $form->id), 
+                                                                                                                'escape' => false]) ?>
+               </td>
             </tr>
             <?php endforeach; ?>
         </tbody>

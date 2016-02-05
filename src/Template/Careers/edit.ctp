@@ -9,6 +9,6 @@
             echo $this->Form->input('forms._ids', ['options' => $forms]);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?=  $this->Form->button(__('Submit'), ['class' => 'btn btn-primary block full-width m-b'])?>
     <?= $this->Form->end() ?>
 </div>

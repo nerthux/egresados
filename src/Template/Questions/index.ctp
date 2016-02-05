@@ -1,21 +1,8 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Question'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Options'), ['controller' => 'Options', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Option'), ['controller' => 'Options', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Forms'), ['controller' => 'Forms', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Form'), ['controller' => 'Forms', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
 <div class="questions index large-9 medium-8 columns content">
     <h3><?= __('Questions') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th><?= $this->Paginator->sort('id') ?></th>
                 <th><?= $this->Paginator->sort('label') ?></th>
                 <th><?= $this->Paginator->sort('ordering') ?></th>
                 <th><?= $this->Paginator->sort('created') ?></th>
@@ -26,15 +13,16 @@
         <tbody>
             <?php foreach ($questions as $question): ?>
             <tr>
-                <td><?= $this->Number->format($question->id) ?></td>
                 <td><?= h($question->label) ?></td>
                 <td><?= h($question->ordering) ?></td>
                 <td><?= h($question->created) ?></td>
                 <td><?= h($question->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $question->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $question->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $question->id], ['confirm' => __('Are you sure you want to delete # {0}?', $question->id)]) ?>
+                    <?= $this->Html->link($this->Html->icon('file'), ['action' => 'view', $question->id], ['escape' => false]) ?>
+                    <?= $this->Html->link($this->Html->icon('edit'), ['action' => 'edit', $question->id], ['escape' => false]) ?>
+                    <?= $this->Form->postLink($this->Html->icon('erase'), ['action' => 'delete', $question->id], ['confirm' => __('Are you sure you want to delete # {0}?',
+                                                                                                                $question->id), 'escape' => false]) ?>
+
                 </td>
             </tr>
             <?php endforeach; ?>

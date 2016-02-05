@@ -18,9 +18,11 @@
                 <td><?= h($generation->created) ?></td>
                 <td><?= h($generation->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $generation->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $generation->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $generation->id], ['confirm' => __('Are you sure you want to delete # {0}?', $generation->id)]) ?>
+                    <?= $this->Html->link($this->Html->icon('file'), ['action' => 'view', $generation->id], ['escape' => false]) ?>
+                    <?= $this->Html->link($this->Html->icon('edit'), ['action' => 'edit', $generation->id], ['escape' => false]) ?>
+                    <?= $this->Form->postLink($this->Html->icon('erase'), ['action' => 'delete', $generation->id], ['confirm' => __('Are you sure you want to delete # {0}?',
+                                                                                                                $generation->id), 'escape' => false]) ?>
+
                 </td>
             </tr>
             <?php endforeach; ?>

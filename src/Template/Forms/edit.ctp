@@ -9,6 +9,6 @@
             echo $this->Form->input('questions._ids', ['multiple' => 'checkbox']);
       ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?=  $this->Form->button(__('Submit'), ['class' => 'btn btn-primary block full-width m-b'])?>
     <?= $this->Form->end() ?>
 </div>

@@ -22,9 +22,10 @@
                 <td><?= h($user->student_id_number) ?></td>
                 <td><?= h($user->role) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+		    <?= $this->Html->link($this->Html->icon('file'), ['action' => 'view', $user->id], ['escape' => false]) ?>
+                    <?= $this->Html->link($this->Html->icon('edit'), ['action' => 'edit', $user->id], ['escape' => false]) ?>
+                    <?= $this->Form->postLink($this->Html->icon('erase'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', 
+														$user->id), 'escape' => false]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

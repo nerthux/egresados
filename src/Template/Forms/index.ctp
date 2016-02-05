@@ -18,7 +18,8 @@
                 <td class="actions">
                     <?= $this->Html->link($this->Html->icon('file'), ['action' => 'view', $form->id], ['escape' => false]) ?>
                     <?= $this->Html->link($this->Html->icon('edit'), ['action' => 'edit', $form->id], ['escape' => false]) ?>
-                    <?= $this->Form->postLink($this->Html->icon('erase'), ['action' => 'delete', $form->id], ['confirm' => __('Are you sure you want to delete # {0}?', $form->id), 'escape' => false]) ?>
+                    <?= $this->Form->postLink($this->Html->icon('erase'), ['action' => 'delete', $form->id], ['confirm' => __('Are you sure you want to delete # {0}?', $form->id), 
+														'escape' => false]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
