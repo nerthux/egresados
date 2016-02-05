@@ -26,6 +26,7 @@ class FormsController extends AppController
 
     public function myForms()
     {
+      	$this->viewBuilder()->layout('users');
 	$this->loadModel('Users');
      	$user = $this->Users->get($this->Auth->user('id'));
 	$query = $this->Forms->find('all')->matching(
