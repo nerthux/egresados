@@ -24,7 +24,11 @@
 
                 <p class="text-muted text-center"><small>Do not have an account?</small></p>
 
-                <a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>
-
+<?=		$this->Html->link(
+    		'Create account',
+    		'/users/register',
+    		['class' => 'btn btn-sm btn-white btn-block', 'target' => '_blank']
+		)
+?>
 </div>
 

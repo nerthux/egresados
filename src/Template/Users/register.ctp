@@ -52,3 +52,12 @@
                                                         'button' => '<button>{{text}}</button>']]);
             echo $this->Form->end();
 ?>
+
+                <p class="text-muted text-center"><small>Already have an account?</small></p>
+<?=             $this->Html->link(
+                'Login',
+                '/users/register',
+                ['class' => 'btn btn-sm btn-white btn-block', 'target' => '_blank']
+                )
+?>
+
