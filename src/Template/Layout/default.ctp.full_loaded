@@ -33,12 +33,39 @@
     <?= $this->Html->script('plugins/metisMenu/jquery.metisMenu') ?>
     <?= $this->Html->script('plugins/slimscroll/jquery.slimscroll.min') ?>
 
+    <!-- Flot -->
+    <?= $this->Html->script('plugins/flot/jquery.flot') ?>
+    <?= $this->Html->script('plugins/flot/jquery.flot.tooltip.min') ?>
+    <?= $this->Html->script('plugins/flot/jquery.flot.spline') ?>
+    <?= $this->Html->script('plugins/flot/jquery.flot.resize') ?>
+    <?= $this->Html->script('plugins/flot/jquery.flot.pie') ?>
+
+
+    <!-- Peity -->
+    <?= $this->Html->script('plugins/peity/jquery.peity.min') ?>
+    <?= $this->Html->script('demo/peity-demo') ?>
+
+
     <!-- Custom and plugin javascript -->
     <?= $this->Html->script('inspinia.js') ?>
     <?= $this->Html->script('plugins/pace/pace.min') ?>
 
     <!-- jQuery UI -->
     <?= $this->Html->script('plugins/jquery-ui/jquery-ui.min') ?>
+
+
+    <!-- GITTER -->
+    <?= $this->Html->script('plugins/gritter/jquery.gritter.min') ?>
+
+
+    <!-- Sparkline -->
+    <?= $this->Html->script('plugins/sparkline/jquery.sparkline.min') ?>
+
+    <!-- Sparkline demo data  -->
+    <?= $this->Html->script('demo/sparkline-demo') ?>
+
+    <!-- ChartJS-->
+    <?= $this->Html->script('plugins/chartJs/Chart.min') ?>
 
     <!-- Toastr -->
     <?= $this->Html->script('plugins/toastr/toastr.min') ?>

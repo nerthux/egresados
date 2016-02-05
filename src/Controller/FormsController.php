@@ -2,6 +2,8 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
+
 
 /**
  * Forms Controller
@@ -24,12 +26,14 @@ class FormsController extends AppController
 
     public function myForms()
     {
+	$this->loadModel('Users');
+     	$user = $this->Users->get($this->Auth->user('id'));
 	$query = $this->Forms->find('all')->matching(
-    					'Careers', function ($q) {
-        					return $q->where(['Careers.id' => '3']);
+    					'Careers', function ($q) use ($user) {
+        					return $q->where(['Careers.id' => $user->career_id]);
     					}
-				)->matching('Generations', function ($q) {
-                                	return $q->where(['Generations.id' => '3']);
+				)->matching('Generations', function ($q) use ($user) {
+                                	return $q->where(['Generations.id' => $user->generation_id]);
 				});
         $this->set('forms', $this->paginate($query));
 	$this->set('_serialize', ['forms']);
