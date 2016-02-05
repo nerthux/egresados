@@ -30,6 +30,7 @@ if (Configure::read('debug')):
     $this->end();
 endif;
 ?>
+<?php $this->layout = 'register'; ?>
 <h2><?= __d('cake', 'An Internal Error Has Occurred') ?></h2>
 <p class="error">
     <strong><?= __d('cake', 'Error') ?>: </strong>

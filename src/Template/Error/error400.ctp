@@ -28,11 +28,13 @@ if (Configure::read('debug')):
     $this->end();
 endif;
 ?>
+<?php $this->layout = 'register'; ?>
 <h2><?= h($message) ?></h2>
 <p class="error">
     <strong><?= __d('cake', 'Error') ?>: </strong>
     <?= sprintf(
-        __d('cake', 'The requested address %s was not found on this server.'),
+        __d('cake', 'Oops !! la dirección  %s no se pudo encontrar en el servidor.'),
         "<strong>'{$url}'</strong>"
     ) ?>
 </p>
+

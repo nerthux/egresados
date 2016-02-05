@@ -39,7 +39,7 @@
                 <h1 class="logo-name">ITT</h1>
             </div>
 
-               <h3>Seguimiento de Egresados ITT</h3>
+               <h3>Comunidad de Egresados ITT</h3>
 	
     	    <?= $this->Flash->render() ?>
 
