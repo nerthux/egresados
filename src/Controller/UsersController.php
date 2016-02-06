@@ -4,6 +4,8 @@ namespace App\Controller;
 use App\Controller\AppController;
 use Cake\Event\Event;
 use Cake\Mailer\Email;
+use Cake\Network\Http\Client;
+
 
 
 /**
@@ -105,6 +107,33 @@ class UsersController extends AppController
         $this->set('_serialize', ['user']);
     }
 
+
+    /**
+     * Profile method
+     *
+     * @param string|null $id User id.
+     * @return void Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     */
+    public function profile()
+    {
+        $user = $this->Users->get($this->Auth->user('id'));
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $user = $this->Users->patchEntity($user, $this->request->data);
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('The user has been saved.'));
+            } else {
+                $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            }
+        }
+        $generations = $this->Users->Generations->find('list', ['limit' => 200]);
+        $careers = $this->Users->Careers->find('list', ['limit' => 200]);
+        $this->set(compact('user', 'generations', 'careers'));
+        $this->set('_serialize', ['user']);
+    }
+
+
+
     /**
      * Delete method
      *
@@ -166,7 +195,7 @@ class UsersController extends AppController
 
    public function validateEmail($id = null, $code = null)
    {
-     $this->viewBuilder()->layout('simple');
+     $this->viewBuilder()->layout('register');
      $user = $this->Users->get($id);
      if ($code == $user->email_validation_code)
      {
@@ -177,6 +206,65 @@ class UsersController extends AppController
      }
 
    }
+
+  public function sendSmsValidation($phone = null)
+  {
+     	$this->viewBuilder()->layout('register');
+        $user = $this->Users->get($this->Auth->user('id'));
+
+	// If User sends the verification code
+      	if ($this->request->is('post')) {
+		$data = $this->request->data;
+		debug($data);
+		debug($user);
+		if ( $data['sms_input_code'] == $user->sms_validation_code)
+		{	
+			debug($data);
+			$user->sms_verified = 1;
+			if ($this->Users->save($user)) {
+                		$this->Flash->success(__('The user has been saved.'));
+                		return $this->redirect(['controller' => 'Pages', 'action' => 'success']);
+			} else {
+		       		$this->Flash->error(__('The user could not be saved. Please, try again.'));
+			}
+		} else {
+			$this->Flash->error(__('The SMS code does not match. Please verify and try again..'));
+		}
+	} else if( $user->sms_verified == 1) {
+			// If user is already verified return error
+                        $this->Flash->error(__('Nothing to do here.'));		
+	} else {
+		
+		$this->loadModel('Settings');
+		$settings = $this->Settings->get(0);
+	
+		//Define SMS Parameters from Settings
+		$userid = $settings->sms_user;
+		$pwd = $settings->sms_pass;
+		$apikey = $settings->sms_apikey;
+		$from = $settings->sms_from;
+		$to = "526641230226";
+		$code = rand(1000, 9999);;
+		$user->sms_validation_code = $code;
+		$msg  = "Su codigo de validacion es $code";
+
+        	$http = new Client(['host' => 'www.experttexting.com', 'scheme' => 'https']);
+		$response = $http->post('/exptapi/exptsms.asmx/SendSMS', 
+					['UserID' => $userid, 
+					 'PWD' => $pwd, 
+					 'APIKEY' => $apikey,
+					 'FROM' => $from, 
+					 'TO' => $to, 
+					 'MSG' => $msg
+				]); 
+
+		if($response->code == 200)
+		{
+        		$user->sms_validation_code = $code;
+			$this->Users->save($user);
+		}
+	}
+  }
 
 
     public function login()
