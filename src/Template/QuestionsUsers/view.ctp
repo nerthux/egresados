@@ -16,11 +16,11 @@
     <table class="vertical-table">
         <tr>
             <th><?= __('User') ?></th>
-            <td><?= $questionsUser->has('user') ? $this->Html->link($questionsUser->user->id, ['controller' => 'Users', 'action' => 'view', $questionsUser->user->id]) : '' ?></td>
+            <td><?= $questionsUser->has('user') ? $this->Html->link($questionsUser->user->username, ['controller' => 'Users', 'action' => 'view', $questionsUser->user->id]) : '' ?></td>
         </tr>
         <tr>
             <th><?= __('Question') ?></th>
-            <td><?= $questionsUser->has('question') ? $this->Html->link($questionsUser->question->id, ['controller' => 'Questions', 'action' => 'view', $questionsUser->question->id]) : '' ?></td>
+            <td><?= $questionsUser->has('question') ? $this->Html->link($questionsUser->question->label, ['controller' => 'Questions', 'action' => 'view', $questionsUser->question->id]) : '' ?></td>
         </tr>
         <tr>
             <th><?= __('Value') ?></th>

@@ -53,8 +53,11 @@ class FormsController extends AppController
         $form = $this->Forms->get($id, [
             'contain' => ['Careers', 'Generations', 'Questions.Options']
         ]);
+        $answers = TableRegistry::get('QuestionsUsers');
+	$answers = $answers->find('all')->where(['user_id' => $this->Auth->user('id')]);
         $this->set('form', $form);
-        $this->set('_serialize', ['form']);
+        $this->set('answers', $answers);
+        $this->set('_serialize', ['form', 'answers']);
     }
 
     /**
@@ -91,7 +94,7 @@ class FormsController extends AppController
     public function edit($id = null)
     {
         $form = $this->Forms->get($id, [
-            'contain' => ['Careers', 'Generations', 'Questions']
+            'contain' => ['Careers.Departments', 'Generations', 'Questions.Options']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $form = $this->Forms->patchEntity($form, $this->request->data);
@@ -103,9 +106,12 @@ class FormsController extends AppController
             }
         }
         $careers = $this->Forms->Careers->find('list', ['limit' => 200]);
+	$departments = $this->Forms->Careers->Departments->find('list', ['limit' => 200]);
         $generations = $this->Forms->Generations->find('list', ['limit' => 200]);
-        $questions = $this->Forms->Questions->find('list', ['limit' => 200]);
-        $this->set(compact('form', 'careers', 'generations', 'questions'));
+        $questions = $this->Forms->Questions->find('list');
+	$questionz = $this->Forms->Questions->find('all')->contain(['Options']);
+
+        $this->set(compact('form', 'careers', 'generations', 'questions', 'departments', 'questionz'));
         $this->set('_serialize', ['form']);
     }
 

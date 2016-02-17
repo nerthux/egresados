@@ -28,7 +28,7 @@
     <?= $this->Html->css('style.css') ?>
 
     <!-- Mainly scripts -->
-    <?= $this->Html->script('jquery-2.1.1') ?>
+    <?= $this->Html->script('jquery-2.2.0.min') ?>
     <?= $this->Html->script('bootstrap.min') ?>
     <?= $this->Html->script('plugins/metisMenu/jquery.metisMenu') ?>
     <?= $this->Html->script('plugins/slimscroll/jquery.slimscroll.min') ?>

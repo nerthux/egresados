@@ -1,3 +1,8 @@
+<?php 
+foreach ( $answers as $answer)
+	$answerz[$answer->question_id] = $answer->value;
+?>
+
 <div class="forms view large-9 medium-8 columns content">
    <div class="related">
     <h4><?= __('Questions') ?></h4>
@@ -12,9 +17,15 @@
         ?>
            <?php foreach ($form->questions as $question): ?>
                 <?= $this->Form->label($question->id, $question->label); ?>
-                <?php foreach ( $question->options as $option ) {
-                  $options[] = ['value' => $option->value, 'text' => $option->text];
-                } ?>
+                <?php
+		foreach ( $question->options as $option ) {
+		  if ( $answerz[$question->id] == $option->value) {
+                    $options[] = ['value' => $option->value, 'text' => $option->text, 'checked' => 'checked'];
+		  } else {
+                    $options[] = ['value' => $option->value, 'text' => $option->text];
+		  }
+		}
+		?>
                 <?= $this->Form->radio($question->id, $options); ?>
                 <?php $options = array(); ?>
            <?php endforeach; ?>

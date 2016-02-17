@@ -50,7 +50,7 @@ class GenerationsController extends AppController
             $generation = $this->Generations->patchEntity($generation, $this->request->data);
             if ($this->Generations->save($generation)) {
                 $this->Flash->success(__('The generation has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller' => $generation->src_controller, 'action' => $generation->src_action, $generation->form_id]);
             } else {
                 $this->Flash->error(__('The generation could not be saved. Please, try again.'));
             }

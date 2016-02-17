@@ -14,14 +14,16 @@ class QuestionsUsersController extends AppController
     /**
      * Index method
      *
-     * @return void
+     * @return \Cake\Network\Response|null
      */
     public function index()
     {
         $this->paginate = [
             'contain' => ['Users', 'Questions']
         ];
-        $this->set('questionsUsers', $this->paginate($this->QuestionsUsers));
+        $questionsUsers = $this->paginate($this->QuestionsUsers);
+
+        $this->set(compact('questionsUsers'));
         $this->set('_serialize', ['questionsUsers']);
     }
 
@@ -29,14 +31,15 @@ class QuestionsUsersController extends AppController
      * View method
      *
      * @param string|null $id Questions User id.
-     * @return void
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @return \Cake\Network\Response|null
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
     {
         $questionsUser = $this->QuestionsUsers->get($id, [
             'contain' => ['Users', 'Questions']
         ]);
+
         $this->set('questionsUser', $questionsUser);
         $this->set('_serialize', ['questionsUser']);
     }
@@ -44,38 +47,40 @@ class QuestionsUsersController extends AppController
     /**
      * Add method
      *
-     * @return void Redirects on successful add, renders view otherwise.
+     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
     public function add()
     {
-      $questionsUser = $this->QuestionsUsers->newEntity();
-      if ($this->request->is('post')) {
-          foreach ( $this->request->data as $key => $value) {
-            $data[] = [ 'question_id' => $key, 'user_id' => $this->Auth->user('id'), 'value' => $value ];
-          }
+        $questionsUser = $this->QuestionsUsers->newEntity();
+        if ($this->request->is('post')) {
+
+		foreach ( $this->request->data as $key => $value) {
+           		 $data[] = [ 'question_id' => $key, 'user_id' => $this->Auth->user('id'), 'value' => $value ];
+          	}
+
           $questionsUsers = $this->QuestionsUsers->newEntities($data);
           foreach ($questionsUsers as $answers)
-            $this->QuestionsUsers->save($answers);
-//          $questionsUser = $this->QuestionsUsers->patchEntity($questionsUser, $this->request->data);
-//          debug($questionsUser);
-//          if ($this->QuestionsUsers->save($questionsUser)) {
-//            $this->Flash->success(__('The questions user has been saved.'));
-//            return $this->redirect(['action' => 'index']);
-//          } else {
-//            $this->Flash->error(__('The questions user could not be saved. Please, try again.'));
-//          }
-      }
-      $users = $this->QuestionsUsers->Users->find('list', ['limit' => 200]);
-      $questions = $this->QuestionsUsers->Questions->find('list', ['limit' => 200]);
-      $this->set(compact('questionsUser', 'users', 'questions'));
-      $this->set('_serialize', ['questionsUser']);
+	  {
+		$answer = $this->QuestionsUsers->find()->where(['user_id' => $answers->user_id])
+							->andWhere(['question_id' => $answers->question_id])
+							->first();
+
+		if ( $answer->id )
+			$answers->id = $answer->id;
+          	$this->QuestionsUsers->save($answers);
+	  }
+       }
+        $users = $this->QuestionsUsers->Users->find('list', ['limit' => 200]);
+        $questions = $this->QuestionsUsers->Questions->find('list', ['limit' => 200]);
+        $this->set(compact('questionsUser', 'users', 'questions'));
+        $this->set('_serialize', ['questionsUser']);
     }
 
     /**
      * Edit method
      *
      * @param string|null $id Questions User id.
-     * @return void Redirects on successful edit, renders view otherwise.
+     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null)
@@ -103,7 +108,7 @@ class QuestionsUsersController extends AppController
      *
      * @param string|null $id Questions User id.
      * @return \Cake\Network\Response|null Redirects to index.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)
     {
