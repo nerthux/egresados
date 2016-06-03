@@ -1,4 +1,5 @@
-<?php 
+<?php
+$answerz = []; 
 foreach ( $answers as $answer)
 	$answerz[$answer->question_id] = $answer->value;
 ?>
@@ -19,10 +20,14 @@ foreach ( $answers as $answer)
                 <?= $this->Form->label($question->id, $question->label); ?>
                 <?php
 		foreach ( $question->options as $option ) {
-		  if ( $answerz[$question->id] == $option->value) {
-                    $options[] = ['value' => $option->value, 'text' => $option->text, 'checked' => 'checked'];
+		  if ( array_key_exists( $question->id, $answerz)) {
+		    if ( $answerz[$question->id] == $option->value) {
+                      $options[] = ['value' => $option->value, 'text' => $option->text, 'checked' => 'checked'];
+		    } else {
+                      $options[] = ['value' => $option->value, 'text' => $option->text];
+		    }
 		  } else {
-                    $options[] = ['value' => $option->value, 'text' => $option->text];
+                      $options[] = ['value' => $option->value, 'text' => $option->text];
 		  }
 		}
 		?>

@@ -5,15 +5,21 @@
         <?php
             echo $this->Form->input('first_name');
             echo $this->Form->input('last_name');
+
             if ( $user->email_verified )
-            	echo $this->Form->input('email', ['label' => 'Email (Verified)']);
-	    else
+              echo $this->Form->input('email', ['label' => 'Email (Verified)']);
+            else
                 echo $this->Form->input('email', ['label' => 'Email (NOT Verified)']);
 
-            if ( $user->sms_verified )
+            if ( $user->sms_verified ) {
                 echo $this->Form->input('mobile_phone_number', ['label' => 'Mobile Phone ( Verified )']);
-            else
+            } else {
                 echo $this->Form->input('mobile_phone_number', ['label' => 'Mobile Phone ( NOT Verified)']);
+                echo $this->Html->link(_('Verify Mobile NOW'),
+                          '/users/sendSmsValidation',
+                              ['class' => 'button', 'target' => '_blank']
+                            );
+            }
 
             echo $this->Form->input('username');
             echo $this->Form->input('password');

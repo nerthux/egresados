@@ -28,13 +28,10 @@
     <?= $this->Html->css('style.css') ?>
 
     <!-- Mainly scripts -->
-    <?= $this->Html->script('jquery-2.1.1') ?>
+    <?= $this->Html->script('jquery-2.2.0.min') ?>
     <?= $this->Html->script('bootstrap.min') ?>
     <?= $this->Html->script('plugins/metisMenu/jquery.metisMenu') ?>
     <?= $this->Html->script('plugins/slimscroll/jquery.slimscroll.min') ?>
-
-   <!-- Toastr -->
-    <?= $this->Html->script('plugins/toastr/toastr.min') ?>
 
     <!-- Custom and plugin javascript -->
     <?= $this->Html->script('inspinia.js') ?>
@@ -42,6 +39,9 @@
 
     <!-- jQuery UI -->
     <?= $this->Html->script('plugins/jquery-ui/jquery-ui.min') ?>
+
+    <!-- Toastr -->
+    <?= $this->Html->script('plugins/toastr/toastr.min') ?>
 
 
     <?= $this->fetch('meta') ?>
@@ -62,7 +62,7 @@
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"> <?= h($this->request->session()->read('Auth.User.first_name')).' '. h($this->request->session()->read('Auth.User.last_name'))  ?></strong>
                              </span> <span class="text-muted text-xs block"><?= $this->request->session()->read('Auth.User.role') ?> <b class="caret"></b></span> </span> </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="/users/profile">Profile</a></li>
+                                <li><a href="profile.html">Profile</a></li>
                                 <li><a href="contacts.html">Contacts</a></li>
                                 <li><a href="mailbox.html">Mailbox</a></li>
                                 <li class="divider"></li>
@@ -74,23 +74,52 @@
                         </div>
                     </li>
                     <li class="active">
+                        <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Usuarios</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+                            <li><?= $this->Html->link(__('Create User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
+                        </ul>
+                    </li>
+                   <li>
+                        <a href="#"><i class="fa fa-graduation-cap"></i> <span class="nav-label">Generaciones</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><?= $this->Html->link(__('List Generations'), ['controller' => 'Generations', 'action' => 'index']) ?></li>
+                            <li><?= $this->Html->link(__('Create Generation'), ['controller' => 'Generations', 'action' => 'add']) ?></li>
+                        </ul>
+                    </li>
+                   <li>
+                        <a href="#"><i class="fa fa-university"></i> <span class="nav-label">Carreras</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            <li><?= $this->Html->link(__('List Careers'), ['controller' => 'Careers', 'action' => 'index']) ?></li>
+                            <li><?= $this->Html->link(__('Create Career'), ['controller' => 'Careers', 'action' => 'add']) ?></li>
+                        </ul>
+                    </li>
+
+                    <li>
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Encuestas</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><?= $this->Html->link(__('List Forms'), ['controller' => 'Forms', 'action' => 'myForms']) ?></li>
+                            <li><?= $this->Html->link(__('List Forms'), ['controller' => 'Forms', 'action' => 'index']) ?></li>
                             <li><?= $this->Html->link(__('Create Form'), ['controller' => 'Forms', 'action' => 'add']) ?></li>
                         </ul>
                     </li>
 
-<?php  if ( $this->request->session()->read('Auth.User.role') === 'admin'): ?>
-			<li >
-                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Control Panel</span><span class="fa arrow"></span></a>
+                   <li>
+                        <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Reportes</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><?= $this->Html->link(__('Dashboard'), ['controller' => 'Users', 'action' => 'index']) ?></li>
+                            <li><a href="graph_flot.html">Flot Charts</a></li>
+                            <li><a href="graph_morris.html">Morris.js Charts</a></li>
+                            <li><a href="graph_rickshaw.html">Rickshaw Charts</a></li>
+                            <li><a href="graph_chartjs.html">Chart.js</a></li>
+                            <li><a href="graph_chartist.html">Chartist</a></li>
+                            <li><a href="c3.html">c3 charts</a></li>
+                            <li><a href="graph_peity.html">Peity Charts</a></li>
+                            <li><a href="graph_sparkline.html">Sparkline Charts</a></li>
                         </ul>
                     </li>
-<?php endif; ?>
-
-               </ul>
+                   <li class="special_link">
+                        <a href="package.html"><i class="fa fa-database"></i> <span class="nav-label">Package</span></a>
+                    </li>
+                </ul>
 
             </div>
         </nav>

@@ -48,20 +48,31 @@ class OptionsController extends AppController
      */
     public function add()
     {
-        $option = $this->Options->newEntity();
-        if ($this->request->is('post')) {
-            $option = $this->Options->patchEntity($option, $this->request->data);
-            if ($this->Options->save($option)) {
-                $this->Flash->success(__('The option has been saved.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('The option could not be saved. Please, try again.'));
-            }
-        }
-        $questions = $this->Options->Questions->find('list', ['limit' => 200]);
-        $this->set(compact('option', 'questions'));
-        $this->set('_serialize', ['option']);
+      $this->viewClass = "Ajax";
+      $response = null;
+      $option = $this->Options->newEntity();
+      if ($this->request->is('post')) {
+
+        $option = $this->Options->patchEntity($option, $this->request->data);
+
+          if ($this->Options->save($option)) {
+            $response = [
+              'status' => '200',
+              'msg' => 'Se ha agregado la opcion exitosamente',
+              'text' => $option->text,
+              'value' => $option->value,
+              'question_id' => $option->question_id
+            ];
+          } else {
+            $response = [
+              'status' => '100',
+              'msg' => 'Oh no! Se ha producido un error'
+            ];
+          }
+      }
+      $this->set('response', json_encode($response));
     }
+
 
     /**
      * Edit method

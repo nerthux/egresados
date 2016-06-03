@@ -49,7 +49,7 @@
 
 </head>
 
-<body>
+<body class="no-config-skin" >
     <div id="wrapper">
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
@@ -62,7 +62,7 @@
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"> <?= h($this->request->session()->read('Auth.User.first_name')).' '. h($this->request->session()->read('Auth.User.last_name'))  ?></strong>
                              </span> <span class="text-muted text-xs block"><?= $this->request->session()->read('Auth.User.role') ?> <b class="caret"></b></span> </span> </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="/users/profile">Profile</a></li>
                                 <li><a href="contacts.html">Contacts</a></li>
                                 <li><a href="mailbox.html">Mailbox</a></li>
                                 <li class="divider"></li>

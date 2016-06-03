@@ -45,14 +45,14 @@ class AppController extends Controller
         $this->loadComponent('Flash');
 
         $this->loadComponent('Auth', [
+	  'authorize' => ['Controller'],
           'loginRedirect' => [
-            'controller' => 'Users',
-            'action' => 'index'
+            'controller' => 'Forms',
+            'action' => 'myForms'
           ],
             'logoutRedirect' => [
               'controller' => 'Users',
-              'action' => 'login',
-              'home'
+              'action' => 'login'
          ]
         ]);
     }
@@ -76,7 +76,7 @@ class AppController extends Controller
 
       public function beforeFilter(Event $event)
       {
-          $this->Auth->allow(['validateEmail', 'display']);
+          $this->Auth->allow(['validateEmail', 'display', 'logout']);
       }
 
 
@@ -98,6 +98,7 @@ class AppController extends Controller
 
     public function isAuthorized($user)
     {
+
       // Admin can access every action
       if (isset($user['role']) && $user['role'] === 'admin') {
         return true;

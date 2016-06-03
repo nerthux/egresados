@@ -13,6 +13,23 @@ use Cake\ORM\TableRegistry;
 class FormsController extends AppController
 {
 
+
+    //Autorizacion hacia las vistas del usuario
+    public function isAuthorized($user)
+     {
+         switch ($this->Auth->user('role')) {
+           case 'student':
+             if (in_array($this->request->action, ['myForms', 'view'])){
+                 return true;
+             }
+             break;
+           default:
+             break;
+         }
+         return parent::isAuthorized($user);
+     }
+
+
     /**
      * Index method
      *
@@ -50,11 +67,13 @@ class FormsController extends AppController
      */
     public function view($id = null)
     {
+        $this->viewBuilder()->layout('users');
+
         $form = $this->Forms->get($id, [
             'contain' => ['Careers', 'Generations', 'Questions.Options']
         ]);
         $answers = TableRegistry::get('QuestionsUsers');
-	$answers = $answers->find('all')->where(['user_id' => $this->Auth->user('id')]);
+        $answers = $answers->find('all')->where(['user_id' => $this->Auth->user('id')]);
         $this->set('form', $form);
         $this->set('answers', $answers);
         $this->set('_serialize', ['form', 'answers']);
@@ -68,11 +87,22 @@ class FormsController extends AppController
     public function add()
     {
         $form = $this->Forms->newEntity();
+
+        if ($this->request->is('ajax')) {
+          $this->viewClass = 'Ajax';
+          $response = [
+              'status' => '200',
+              'msg' => 'Zup'
+          ];
+          $this->set('response', json_encode($response));
+        }
+
         if ($this->request->is('post')) {
-            $form = $this->Forms->patchEntity($form, $this->request->data);
+          $form = $this->Forms->patchEntity($form, $this->request->data);
+          debug($this->request->data);
             if ($this->Forms->save($form)) {
                 $this->Flash->success(__('The form has been saved.'));
-                return $this->redirect(['action' => 'index']);
+                //return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('The form could not be saved. Please, try again.'));
             }

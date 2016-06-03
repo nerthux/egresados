@@ -25,7 +25,22 @@ class UsersController extends AppController
     	}
     }
 
-    /**
+    //Autorizacion hacia las vistas del usuario
+    public function isAuthorized($user)
+     {
+         switch ($this->Auth->user('role')) {
+           case 'student':
+             if (in_array($this->request->action, ['profile', 'sendSmsValidation'])){
+               return true;
+             }
+             break;
+           default:
+             break;
+         }
+         return parent::isAuthorized($user);
+     }
+
+   /**
      * Index method
      *
      * @return void
@@ -209,47 +224,47 @@ class UsersController extends AppController
 
   public function sendSmsValidation($phone = null)
   {
-     	$this->viewBuilder()->layout('register');
-        $user = $this->Users->get($this->Auth->user('id'));
+    $this->viewBuilder()->layout('register');
+    $user = $this->Users->get($this->Auth->user('id'));
 
-	// If User sends the verification code
-      	if ($this->request->is('post')) {
-		$data = $this->request->data;
-		debug($data);
-		debug($user);
-		if ( $data['sms_input_code'] == $user->sms_validation_code)
-		{	
-			debug($data);
-			$user->sms_verified = 1;
-			if ($this->Users->save($user)) {
-                		$this->Flash->success(__('The user has been saved.'));
-                		return $this->redirect(['controller' => 'Pages', 'action' => 'success']);
-			} else {
-		       		$this->Flash->error(__('The user could not be saved. Please, try again.'));
-			}
-		} else {
-			$this->Flash->error(__('The SMS code does not match. Please verify and try again..'));
-		}
-	} else if( $user->sms_verified == 1) {
-			// If user is already verified return error
-                        $this->Flash->error(__('Nothing to do here.'));		
-	} else {
-		
-		$this->loadModel('Settings');
-		$settings = $this->Settings->get(0);
-	
-		//Define SMS Parameters from Settings
-		$userid = $settings->sms_user;
-		$pwd = $settings->sms_pass;
-		$apikey = $settings->sms_apikey;
-		$from = $settings->sms_from;
-		$to = "526641230226";
-		$code = rand(1000, 9999);;
-		$user->sms_validation_code = $code;
-		$msg  = "Su codigo de validacion es $code";
+      // If User sends the verification code
+      if ($this->request->is('post')) {
+        $data = $this->request->data;
+        debug($data);
+        debug($user);
+        if ( $data['sms_input_code'] == $user->sms_validation_code)
+        {
+          debug($data);
+          $user->sms_verified = 1;
+          if ($this->Users->save($user)) {
+            $this->Flash->success(__('The user has been saved.'));
+            return $this->redirect(['controller' => 'Pages', 'action' => 'success']);
+          } else {
+            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+          }
+        } else {
+          $this->Flash->error(__('The SMS code does not match. Please verify and try again..'));
+        }
+      } else if( $user->sms_verified == 1) {
+        // If user is already verified return error
+        $this->Flash->error(__('Nothing to do here.'));		
+      } else {
 
-        	$http = new Client(['host' => 'www.experttexting.com', 'scheme' => 'https']);
-		$response = $http->post('/exptapi/exptsms.asmx/SendSMS', 
+        $this->loadModel('Settings');
+        $settings = $this->Settings->get(0);
+
+        //Define SMS Parameters from Settings
+        $userid = $settings->sms_user;
+        $pwd = $settings->sms_pass;
+        $apikey = $settings->sms_apikey;
+        $from = $settings->sms_from;
+        $to = "52".$user->mobile_phone_number;
+        $code = rand(1000, 9999);;
+        $user->sms_validation_code = $code;
+        $msg  = "Su codigo de validacion es $code";
+
+        $http = new Client(['host' => 'www.experttexting.com', 'scheme' => 'https']);
+        $response = $http->post('/exptapi/exptsms.asmx/SendSMS', 
 					['UserID' => $userid, 
 					 'PWD' => $pwd, 
 					 'APIKEY' => $apikey,
@@ -258,12 +273,12 @@ class UsersController extends AppController
 					 'MSG' => $msg
 				]); 
 
-		if($response->code == 200)
-		{
-        		$user->sms_validation_code = $code;
-			$this->Users->save($user);
-		}
-	}
+		  if($response->code == 200)
+		  {
+        $user->sms_validation_code = $code;
+			  $this->Users->save($user);
+		  }
+	  }
   }
 
 

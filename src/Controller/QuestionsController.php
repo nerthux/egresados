@@ -45,7 +45,31 @@ class QuestionsController extends AppController
      */
     public function add()
     {
-        $question = $this->Questions->newEntity();
+      $this->viewClass = 'Ajax';
+      $question = $this->Questions->newEntity();
+
+        if ($this->request->is('ajax')) {
+          if ($this->request->is('post')) {
+            $question = $this->Questions->patchEntity($question, $this->request->data);
+            if ($this->Questions->save($question)) {
+              $response = [
+                'status' => '200',
+                'msg' => 'Se ha guardado exitosamente',
+                'label' => $question->label,
+                'id' => $question->id
+              ];
+            } else {
+              $response = [
+                'status' => '300',
+                'msg' => 'Ha ocurrido un error, intente de nuevo'
+               ];
+            }
+            $this->set('response', json_encode($response));
+          }
+
+       } else {
+
+
         if ($this->request->is('post')) {
             $question = $this->Questions->patchEntity($question, $this->request->data);
             if ($this->Questions->save($question)) {
@@ -59,6 +83,8 @@ class QuestionsController extends AppController
         $users = $this->Questions->Users->find('list', ['limit' => 200]);
         $this->set(compact('question', 'forms', 'users'));
         $this->set('_serialize', ['question']);
+
+       }
     }
 
     /**

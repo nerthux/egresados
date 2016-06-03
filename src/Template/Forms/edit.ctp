@@ -1,88 +1,82 @@
-	<div class="col-sm-7">
-	    <?= $this->Form->create($form) ?>
-	    <fieldset>
-		<legend><?= __('Edit Form') ?></legend>
-			<?=  $this->Form->input('name') ?>
-			</div>
-	</div>
+<div class="col-sm-7">
+ <?= $this->Form->create($form) ?>
+  <fieldset>
+    <legend><?= __('Edit Form') ?></legend>
+      <?=  $this->Form->input('name') ?>
+</div>
 
-	<div class="row  border-bottom white-bg dashboard-header">
-		<div class="col-sm-4">
-			<?=  $this->Form->input('careers._ids', ['multiple' => 'checkbox']) ?>
-		</div>
+</div>
 
-		<div class="col-sm-3">
-			<?=  $this->Form->input('generations._ids', ['multiple' => 'checkbox']) ?>
-		</div>
+<div class="row  border-bottom white-bg dashboard-header">
+  <div class="col-sm-4">
+    <?=  $this->Form->input('careers._ids', ['multiple' => 'checkbox']) ?>
+  </div>
 
-		<div class="col-sm-3">
-			<?= $this->Form->button('Add New Generations', [
-				'type' => 'button',
-				'data-toggle' => 'modal',
-				'data-target' => '#ModalGenerations'
-			]) ?>
+  <div class="col-sm-3">
+    <?=  $this->Form->input('generations._ids', ['multiple' => 'checkbox']) ?>
+  </div>
 
-                        <?= $this->Form->button('Add New Career', [
-                                'type' => 'button',
-                                'data-toggle' => 'modal',
-                                'data-target' => '#ModalCareers'
-                        ]) ?>
+  <div class="col-sm-3">
+    <?= $this->Form->button('Add New Generations', [
+        'type' => 'button',
+        'data-toggle' => 'modal',
+        'data-target' => '#ModalGenerations'
+      ]) ?>
 
-		</div>
-	</div>
+      <?= $this->Form->button('Add New Career', [
+          'type' => 'button',
+          'data-toggle' => 'modal',
+          'data-target' => '#ModalCareers'
+        ]) ?>
 
-	<div class="row  border-bottom white-bg dashboard-header">
-		<div class="col-sm-7">
-			<?=  $this->Form->input('questions._ids', ['multiple' => 'checkbox']) ?>
-			<?php  $i = 0; 
-				foreach ($questionz as $question) {
-					echo $this->Form->checkbox('question[]'); echo $question->label . "<br />";
-					$i++;
-				}
-			?>
-			</fieldset>
+  </div>
+</div>
 
-			<?=  $this->Form->button(__('Submit'), ['class' => 'btn btn-primary block full-width m-b'])?>
+<div class="row  border-bottom white-bg dashboard-header">
+  <div class="col-sm-7">
+    <?=  $this->Form->input('questions._ids', ['multiple' => 'checkbox']) ?>
 
-			<?= $this->Form->end() ?>
-		</div>
+   </fieldset>
 
-		<div class="col-sm-3">
+<?=  $this->Form->button(__('Submit'), ['class' => 'btn btn-primary block full-width m-b'])?>
 
-			<?= $this->Form->button('Add New Question', [
-				'data-toggle' => 'modal',
-				'data-target' => '#MyModal1'
-			]) ?>
-		</div>
-	</div>
+<?= $this->Form->end() ?>
+</div>
 
-	<div class="row  border-bottom white-bg dashboard-header">
-		<div class="col-sm-7">
+<div class="col-sm-3">
 
-	<?php
-	    // Here starts modal for generations
-	    echo $this->Modal->create("Add Generation", ['id' => 'ModalGenerations', 'close' => false]) ; 
-	?>
-	    <?= $this->Form->create(null, ['url' => ['controller' => 'Generations', 'action' => 'add']]) ?>
-	    <fieldset>
-		<?php
-		    echo $this->Form->input('title');
-		    echo $this->Form->input('senior_year');
-		    echo $this->Form->hidden('form_id', ['value' => $form->id]);
-		    echo $this->Form->hidden('src_controller', ['value' => 'Forms']);
-		    echo $this->Form->hidden('src_action', ['value' => 'edit']);
-		?>
-	    </fieldset>
-	    <?=  $this->Form->button(__('Submit'), ['class' => 'btn btn-primary block full-width m-b'])?>
-	    <?= $this->Form->end() ?>
+  <?= $this->Form->button('Add New Question', [
+      'data-toggle' => 'modal',
+      'data-target' => '#MyModal1'
+    ]) ?>
+  </div>
+</div>
 
+<div class="row  border-bottom white-bg dashboard-header">
+  <div class="col-sm-7">
 
-	<?php
-	    echo $this->Modal->end([
-		$this->Form->button('Close', ['data-dismiss' => 'modal']) 
-	    ]);
-	    // End Modal for Generation
-	?>
+<?php
+    // Here starts modal for generations
+    echo $this->Modal->create("Add Generation", ['id' => 'ModalGenerations', 'close' => false]) ; 
+?>
+    <?= $this->Form->create(null, ['url' => ['controller' => 'Generations', 'action' => 'add']]) ?>
+    <fieldset>
+<?php
+  echo $this->Form->input('title');
+  echo $this->Form->input('senior_year');
+  echo $this->Form->hidden('form_id', ['value' => $form->id]);
+  echo $this->Form->hidden('src_controller', ['value' => 'Forms']);
+  echo $this->Form->hidden('src_action', ['value' => 'edit']);
+?>
+ </fieldset>
+
+<?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary block full-width m-b'])?>
+<?= $this->Form->end() ?>
+
+<?= $this->Modal->end([
+    $this->Form->button('Close', ['data-dismiss' => 'modal'])
+  ]) 
+?>
 
         <?php
             // Here starts modal for Career
