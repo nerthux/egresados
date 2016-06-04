@@ -43,18 +43,30 @@ class FormsController extends AppController
 
     public function myForms()
     {
-      	$this->viewBuilder()->layout('users');
-	$this->loadModel('Users');
-     	$user = $this->Users->get($this->Auth->user('id'));
-	$query = $this->Forms->find('all')->matching(
-    					'Careers', function ($q) use ($user) {
-        					return $q->where(['Careers.id' => $user->career_id]);
-    					}
-				)->matching('Generations', function ($q) use ($user) {
-                                	return $q->where(['Generations.id' => $user->generation_id]);
-				});
-        $this->set('forms', $this->paginate($query));
-	$this->set('_serialize', ['forms']);
+      $this->viewBuilder()->layout('users');
+      $this->loadModel('Users');
+      $user = $this->Users->get($this->Auth->user('id'));
+
+      $forms = $this->Forms->find('all')->matching(
+        'Careers', function ($q) use ($user) {
+        return $q->where(['Careers.id' => $user->career_id]);
+        }
+        )->matching('Generations', function ($q) use ($user) {
+          return $q->where(['Generations.id' => $user->generation_id]);
+        });
+
+        $questions = TableRegistry::get('FormsQuestions');
+        $answers = TableRegistry::get('QuestionsUsers');
+
+        foreach ( $forms as $form){
+          $total_questions[$form->id] =  $questions->find()->where(['form_id' => $form->id])->count();
+          $total_answers[$form->id] = $answers->find()->where(['user_id' => $user->id, 'form_id' => $form->id])->count();
+
+        }
+      $this->set('total_questions', $total_questions);
+      $this->set('total_answers', $total_answers);
+      $this->set('forms', $this->paginate($forms));
+      $this->set('_serialize', ['forms']);
     }
 
 
@@ -72,8 +84,10 @@ class FormsController extends AppController
         $form = $this->Forms->get($id, [
             'contain' => ['Careers', 'Generations', 'Questions.Options']
         ]);
+
         $answers = TableRegistry::get('QuestionsUsers');
         $answers = $answers->find('all')->where(['user_id' => $this->Auth->user('id')]);
+
         $this->set('form', $form);
         $this->set('answers', $answers);
         $this->set('_serialize', ['form', 'answers']);
@@ -136,10 +150,10 @@ class FormsController extends AppController
             }
         }
         $careers = $this->Forms->Careers->find('list', ['limit' => 200]);
-	$departments = $this->Forms->Careers->Departments->find('list', ['limit' => 200]);
+        $departments = $this->Forms->Careers->Departments->find('list', ['limit' => 200]);
         $generations = $this->Forms->Generations->find('list', ['limit' => 200]);
-        $questions = $this->Forms->Questions->find('list');
-	$questionz = $this->Forms->Questions->find('all')->contain(['Options']);
+        $questions = $this->Forms->Questions->find('list'); 
+        $questionz = $this->Forms->Questions->find('all')->contain(['Options']);
 
         $this->set(compact('form', 'careers', 'generations', 'questions', 'departments', 'questionz'));
         $this->set('_serialize', ['form']);

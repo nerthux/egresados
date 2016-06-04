@@ -20,9 +20,9 @@ class UsersController extends AppController
     {
         parent::beforeFilter($event);
         $this->Auth->allow('register','logout');
-    	if ($this->request->action === 'register') {
-        	$this->loadComponent('Recaptcha.Recaptcha');
-    	}
+        if ($this->request->action === 'register') {
+          $this->loadComponent('Recaptcha.Recaptcha');
+        }
     }
 
     //Autorizacion hacia las vistas del usuario
@@ -177,34 +177,34 @@ class UsersController extends AppController
     {
       $this->viewBuilder()->layout('register');
       $user = $this->Users->newEntity();
+
       if ($this->request->is('post')) {
         if ($this->Recaptcha->verify()) {
-        	$user = $this->Users->patchEntity($user, $this->request->data);
-        	$user->email_validation_code = rand(10000, 99999);
-		$user->role = 'student';
-        	if ($this->Users->save($user)) {
-            		$email = new Email();
-            		$email->template('confirmation')
-              		->emailFormat('text')
-              		->to($user->email)
-              		->from('gcovarrubias@c4-technologies.com');
-            		$validate_url = "http://www.egresadositt.com/users/validateEmail/$user->id/$user->email_validation_code";
-            		$email->viewVars(['first_name' => $user->first_name, 'email_validation_code' => $validate_url]);
-            		$email->send();
-            		$this->Flash->success(__('The user has been saved.'));
-            		return $this->redirect(['controller' => 'Pages', 'action' => 'success']);
-          	} else {
-            		$this->Flash->error(__('The user could not be saved. Please, try again.'));
-          	}
-	 } else {
-		$this->Flash->error(__('Please check your Recaptcha Box.'));
-	 }
-        }
-        $generations = $this->Users->Generations->find('list', ['limit' => 200]);
-        $careers = $this->Users->Careers->find('list', ['limit' => 200]);
-        $questions = $this->Users->Questions->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'generations', 'careers', 'questions'));
-        $this->set('_serialize', ['user']);
+          $user = $this->Users->patchEntity($user, $this->request->data);
+          $user->email_validation_code = rand(10000, 99999);
+          $user->role = 'student';
+          if ($this->Users->save($user)) {
+            $email = new Email();
+            $email->template('confirmation')
+                  ->emailFormat('text')
+                  ->to($user->email)
+                  ->from('gcovarrubias@c4-technologies.com');
+            $validate_url = "http://www.egresadositt.com/users/validateEmail/$user->id/$user->email_validation_code";
+            $email->viewVars(['first_name' => $user->first_name, 'email_validation_code' => $validate_url]);
+            $email->send();
+            $this->Flash->success(__('The user has been saved.'));
+              return $this->redirect(['controller' => 'Pages', 'action' => 'success']);
+          } else
+             $this->Flash->error(__('The user could not be saved. Please, try again.'));
+        } else
+          $this->Flash->error(__('Please check your Recaptcha Box.'));
+      }
+
+      $generations = $this->Users->Generations->find('list', ['limit' => 200]);
+      $careers = $this->Users->Careers->find('list', ['limit' => 200]);
+      $questions = $this->Users->Questions->find('list', ['limit' => 200]);
+      $this->set(compact('user', 'generations', 'careers', 'questions'));
+      $this->set('_serialize', ['user']);
     }
 
 
