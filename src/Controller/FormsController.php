@@ -79,7 +79,7 @@ class FormsController extends AppController
      */
     public function view($id = null)
     {
-        $this->viewBuilder()->layout('users');
+        $this->viewBuilder()->layout('survey');
 
         $form = $this->Forms->get($id, [
             'contain' => ['Careers', 'Generations', 'Questions.Options']
