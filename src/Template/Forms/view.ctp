@@ -26,7 +26,7 @@ array_multisort($ordering, SORT_ASC, $form->questions);
 <div id="survey_container">
 
   <div id="top-wizard">
-    <strong>Progress </strong>
+    <strong>Progreso </strong>
     <div id="progressbar"></div>
       <div class="shadow"></div>
   </div><!-- end top-wizard -->

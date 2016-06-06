@@ -7,7 +7,7 @@
 
 <!-- Basic Page Needs -->
 <meta charset="utf-8">
-<title>ANNOVA Survey Responsive Template</title>
+<title>Seguimiento de Egresados</title>
 <meta name="description" content="">
 <meta name="author" content="Ansonika">
 
