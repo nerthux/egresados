@@ -4,7 +4,7 @@
   <div class="alert-danger lead bold"> Oh no!!! Tu email no esta verificado </div>
 <?php endif; ?>
 
-<?php if (!$this->request->session()->read('Auth.User.sms_verified')): ?>
+<?php if ($this->request->session()->read('Auth.User.sms_verified')): ?>
     <div class="alert-success lead bold"> Yuhuuuuu!!! Tu teléfono móvil fue verificado </div>
 <?php else: ?>
   <div class="alert-danger lead bold"> Buuuuuuu!!! Tu teléfono móvil no esta verificado </div>
