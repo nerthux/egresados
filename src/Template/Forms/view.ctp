@@ -14,8 +14,8 @@ array_multisort($ordering, SORT_ASC, $form->questions);
   <div class="container">
     <div class="row">
       <div class="col-md-12 main-title">
-        <h1>Branching wizard</h1>
-        <p>You see different steps depending on your answers.</p>
+      <h1><?= $form->name ?></h1>
+        <p>Selecciona la respuesta más adecuada.</p>
       </div>
     </div>
   </div>
@@ -31,7 +31,13 @@ array_multisort($ordering, SORT_ASC, $form->questions);
       <div class="shadow"></div>
   </div><!-- end top-wizard -->
 
-  <form name="survey_container" action="" method="POST">
+  <form method="post" accept-charset="utf-8" role="form" action="/questions-users/add">
+
+  <div style="display:none;">
+    <input type="hidden" name="_method" class="form-control"  value="POST" />
+    <input type="hidden" name="form_id" id="form_id" value="<?= $form->id ?>" />
+    <input id="website" name="website" type="text" value="" >
+  </div>
   <div id="middle-wizard">
 
 
@@ -45,18 +51,15 @@ array_multisort($ordering, SORT_ASC, $form->questions);
       foreach ( $question->options as $option ) {
       if ( array_key_exists( $question->id, $answerz)) {
         if ( $answerz[$question->id] == $option->value) {
-          echo "<li><label for='$question->id-$option-value' class='radio-inline'>";
-          echo "<input type='radio' name='$question->id' checked='checked' value='$option->value' id='$question->id-$option-value'>  $option->text";
-          echo "</label></li>";
+          echo "<li><input type='radio' name='$question->id' checked='checked' value='$option->value' id='$question->id-$option->value' class='check_radio'>";
+          echo "<label for='$question->id-$option->value' class='radio-inline'> $option->text </label></li>";
         } else {
-          echo "<li><label for='$question->id- $option-value' class='radio-inline'>";
-          echo "<input type='radio' name='$question->id' value='$option->value' id='$question->id-$option-value'>  $option->text";
-          echo "</label></li>";
+          echo "<li><input type='radio' name='$question->id' value='$option->value' id='$question->id-$option->value' class='check_radio'>";
+          echo "<label for='$question->id-$option->value' class='radio-inline'> $option->text </label></li>";
         }
       } else {
-        echo "<li><label for='$question->id-$option-value' class='radio-inline'>";
-        echo "<input type='radio' name='$question->id' value='$option->value' id='$question->id-$option-value'>  $option->text";
-       echo "</label></li>";
+        echo "<li><input type='radio' name='$question->id' value='$option->value' id='$question->id-$option->value' class='check_radio'>";
+        echo "<label for='$question->id-$option->value' class='radio-inline'> $option->text </label></li>";
       }
     }
     echo '    </ul>';
@@ -74,53 +77,8 @@ array_multisort($ordering, SORT_ASC, $form->questions);
 <div id="bottom-wizard">
   <button type="button" name="backward" class="backward">Atras</button>
   <button type="button" name="forward" class="forward">Siguiente </button>
-  <button type="submit" name="process" class="forward">Guardar Ahora</button>
 </div><!-- end bottom-wizard -->
 </form>
 </div><!-- end Survey container -->
 </section><!-- end section main container -->
 
-
-<div class="forms view large-9 medium-8 columns content my-form">
-   <div class="related">
-    <h4><?= __('Questions') ?></h4>
-
-    <?php if (!empty($form->questions)): ?>
-        <form method="post" accept-charset="utf-8" role="form" action="/questions-users/add">
-          <div style="display:none;">
-            <input type="hidden" name="_method" class="form-control"  value="POST" />
-            <input type="hidden" name="form_id" id="form_id" value="<?= $form->id ?>" />
-          </div>
-
-          <?php
-          foreach ($form->questions as $question) {
-
-            echo "<label class='control-label' for='$question->id'> $question->label</label>";
-            echo "<div class='radio'>";
-
-            foreach ( $question->options as $option ) {
-              if ( array_key_exists( $question->id, $answerz)) {
-                if ( $answerz[$question->id] == $option->value) {
-                  echo "<label for='$question->id-$option-value' class='radio-inline'>";
-                  echo "<input type='radio' name='$question->id' checked='checked' value='$option->value' id='$question->id-$option-value'>  $option->text";
-                  echo "</label>";
-                } else {
-                  echo "<label for='$question->id- $option-value' class='radio-inline'>";
-                  echo "<input type='radio' name='$question->id' value='$option->value' id='$question->id-$option-value'>  $option->text";
-                  echo "</label>";
-                }
-              } else {
-                echo "<label for='$question->id-$option-value' class='radio-inline'>";
-                echo "<input type='radio' name='$question->id' value='$option->value' id='$question->id-$option-value'>  $option->text";
-                echo "</label>";
-              }
-            }
-            echo "</div>";
-            echo "<div class='clear' />";
-          }
-          ?>
-          <input type="submit" value="Submit">
-        </form>
-        <?php endif; ?>
-   </div>
-</div>

@@ -67,7 +67,6 @@ if( window.innerWidth < 340 ) {
 	// WIZARD with branch ===============================================================================
 	jQuery(function($) {
 				// Example 1: Basic wizard with validation
-				$('form').attr('action', 'survey_send_1.php');
 				$("#survey_container").wizard({
 					stepsWrapper: "#wrapped",
 					submit: ".submit",
