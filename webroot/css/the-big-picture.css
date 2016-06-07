@@ -1,0 +1,108 @@
+/*!
+ * Start Bootstrap - The Big Picture (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+body {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background: 000;
+}
+
+.full {
+  background: url(/img/tectijuana-galgoblur-65.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+.highlighted {
+  background-color: rgba(120,120,120,.5);
+  color: #fff;
+}
+
+#register input, #register select {
+  background-color: #fff;
+  color: #777;
+}
+
+.breath {
+  margin-top: 25px;
+}
+
+#register h3 { margin: 5px 0px 25px 0px;}
+
+.fill { min-height: 400px; height: 400; color:#fff; }
+
+.navbar-default {
+    background-color: #4cae4c;
+      border-color: #2c892c;
+    }
+    .navbar-default .navbar-brand {
+        color: #ecf0f1;
+      }
+      .navbar-default .navbar-brand:hover,
+      .navbar-default .navbar-brand:focus {
+          color: #ecdbff;
+        }
+        .navbar-default .navbar-text {
+            color: #ecf0f1;
+          }
+          .navbar-default .navbar-nav > li > a {
+              color: #ecf0f1;
+            }
+            .navbar-default .navbar-nav > li > a:hover,
+            .navbar-default .navbar-nav > li > a:focus {
+                color: #ecdbff;
+              }
+              .navbar-default .navbar-nav > .active > a,
+              .navbar-default .navbar-nav > .active > a:hover,
+              .navbar-default .navbar-nav > .active > a:focus {
+                  color: #ecdbff;
+                    background-color: #2c892c;
+                  }
+                  .navbar-default .navbar-nav > .open > a,
+                  .navbar-default .navbar-nav > .open > a:hover,
+                  .navbar-default .navbar-nav > .open > a:focus {
+                      color: #ecdbff;
+                        background-color: #2c892c;
+                      }
+                      .navbar-default .navbar-toggle {
+                          border-color: #2c892c;
+                        }
+                        .navbar-default .navbar-toggle:hover,
+                        .navbar-default .navbar-toggle:focus {
+                            background-color: #2c892c;
+                          }
+                          .navbar-default .navbar-toggle .icon-bar {
+                              background-color: #ecf0f1;
+                            }
+                            .navbar-default .navbar-collapse,
+                            .navbar-default .navbar-form {
+                                border-color: #ecf0f1;
+                              }
+                              .navbar-default .navbar-link {
+                                  color: #ecf0f1;
+                                }
+                                .navbar-default .navbar-link:hover {
+                                    color: #ecdbff;
+                                  }
+
+                                  @media (max-width: 767px) {
+                                      .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+                                            color: #ecf0f1;
+                                              }
+                                                .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+                                                  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+                                                        color: #ecdbff;
+                                                          }
+                                                            .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+                                                              .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+                                                                .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+                                                                      color: #ecdbff;
+                                                                          background-color: #2c892c;
+                                                                            }
+                                                                          }

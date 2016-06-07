@@ -175,7 +175,7 @@ class UsersController extends AppController
      *                     */
     public function register()
     {
-      $this->viewBuilder()->layout('register');
+      $this->viewBuilder()->layout('registerv2');
       $user = $this->Users->newEntity();
 
       if ($this->request->is('post')) {
