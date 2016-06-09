@@ -63,8 +63,6 @@
                              </span> <span class="text-muted text-xs block"><?= $this->request->session()->read('Auth.User.role') ?> <b class="caret"></b></span> </span> </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 <li><a href="/users/profile">Profile</a></li>
-                                <li><a href="contacts.html">Contacts</a></li>
-                                <li><a href="mailbox.html">Mailbox</a></li>
                                 <li class="divider"></li>
                                 <li><a href="/users/logout">Logout</a></li>
                             </ul>
@@ -76,8 +74,7 @@
                     <li class="active">
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Encuestas</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><?= $this->Html->link(__('List Forms'), ['controller' => 'Forms', 'action' => 'myForms']) ?></li>
-                            <li><?= $this->Html->link(__('Create Form'), ['controller' => 'Forms', 'action' => 'add']) ?></li>
+                            <li><?= $this->Html->link(__('Mis Encuentas'), ['controller' => 'Forms', 'action' => 'myForms']) ?></li>
                         </ul>
                     </li>
 

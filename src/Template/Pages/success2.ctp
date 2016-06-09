@@ -1,33 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
+<html>
+
+<?php $this->layout = false; ?>
+
 
 <head>
+    <?= $this->Html->charset() ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>
+        <?= $this->fetch('title') ?>
+    </title>
 
-    <title>Seguimiento de Egresados ITT - Unete a la comunidad</title>
+    <?= $this->Html->meta('icon') ?>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <?= $this->Html->css('bootstrap.min.css') ?>
+    <?= $this->Html->css('font-awesome/css/font-awesome.css') ?>
+    <?= $this->Html->css('plugins/iCheck/custom.css') ?>
+    <?= $this->Html->css('animate.css') ?>
+    <?= $this->Html->css('style.css') ?>
+    <?= $this->Html->css('the-big-picture.css') ?>
 
-    <!-- Custom CSS -->
-    <link href="/css/the-big-picture.css" rel="stylesheet">
+    <?= $this->Html->script('jquery-2.1.1') ?>
+    <?= $this->Html->script('bootstrap.min') ?>
+    <?= $this->Html->script('plugins/iCheck/icheck.min') ?>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+
+    <?= $this->fetch('meta') ?>
+    <?= $this->fetch('css') ?>
+    <?= $this->fetch('script') ?>
+
 
 </head>
 
-<body>
+
+<body class="gray-bg">
     <div class="container">
     <div class="row" >
       <div class="logo-tnm col-md-4 col-sd-4 col-xs-3" >
@@ -98,23 +105,21 @@
         </div>
         <!-- /.container -->
     </nav>
-    <div class="full">
-      <!-- Page Content -->
-      <div class="container">
-        <div class="row breath">
-          <?= $this->fetch('content') ?>
-        </div>
-        <!-- /.row -->
-      </div>
+        <!-- /.container -->
+    </nav>    <!-- Page Content -->
+
+    <div class="middle-box text-center animated fadeInDown">
+        <h1>=D</h1>
+        <h3 class="font-bold">Tu registro ha sido procesado con éxito..</h3>
+
+        <div class="error-desc">
+          <p> Se ha enviado un correo electrónico de confirmación, por favor ingresa a tu cuenta de correo y da click al enlace de confirmación 
+              para finalizar el proceso de registro. A partir de este momento ya puedes ingresar al sistema con el usuario y contraseña que elegiste 
+          </p>
+       </div>
     </div>
-    <!-- /.container -->
-
-    <!-- jQuery -->
-    <script src="/js/jquery-2.1.1.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/js/bootstrap.min.js"></script>
 
 </body>
 
 </html>
+

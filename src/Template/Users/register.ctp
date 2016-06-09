@@ -1,5 +1,6 @@
-<div class="col-md-6 col-sm-3 pull-left highlighted fill">
-  <h1> ¡ Bienvenido Egresados ! </h1>
+<div class="container fill highlighted" >
+<div class="col-md-6 col-sm-6 pull-left ">
+  <h1> ¡ Bienvenido Egresado ! </h1>
   <h3> ¿ Eres egresado del Tecnológico de Tijuana ? </h3>
   <p> Este espacio fue creado para tí, el Instituto Tecnológico de Tijuana ha creado el Sistema de Seguimiento de Egresados 
       para mantenernos en contacto contigo. Nos interesa saber acerca de ti, informarte sobre eventos especiales para egresados,
@@ -9,7 +10,7 @@
   <p> Este sitio está en su fase de pruebas, si tu carrera o generación no se encuentran en la lista, próximamente lo estarán.</p>
 </div>
 
-<div class="col-md-6 col-sm-3 pull-right highlighted fill">
+<div class="col-md-6 col-sm-6 pull-right ">
   <div id="register" class="tab-pane fade in active">
     <h3> Registrate y mantente en contacto</h3>
     <div class="innter-form">
@@ -90,4 +91,5 @@
 
     </div>
   </div>
+</div>
 </div>
