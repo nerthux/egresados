@@ -151,8 +151,6 @@ class FormsController extends AppController
         $careers = $this->Forms->Careers->find('list', ['limit' => 200]);
         $departments = $this->Forms->Careers->Departments->find('list', ['limit' => 200]);
         $generations = $this->Forms->Generations->find('list', ['limit' => 200]);
-        $questions = $this->Forms->Questions->find('list'); 
-        $questionz = $this->Forms->Questions->find('all')->contain(['Options']);
 
         $this->set(compact('form', 'careers', 'generations', 'questions', 'departments', 'questionz'));
         $this->set('_serialize', ['form']);

@@ -34,7 +34,6 @@
 
 <div class="row  border-bottom white-bg dashboard-header">
   <div class="col-sm-7">
-    <?=  $this->Form->input('questions._ids', ['multiple' => 'checkbox']) ?>
 
    </fieldset>
 
