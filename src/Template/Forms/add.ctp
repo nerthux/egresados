@@ -38,7 +38,7 @@
        <?= $this->Modal->create(_('Add a new question'), ['id' => 'MyModal1', 'close' => false]) ?> 
          <?= $this->Form->create() ?>
            <?= $this->Form->input('label', ['class' => 'question-label']) ?>
-           <?= $this->Form->hidden('form_id', ['class' => 'question-label', 'value' => $form->id]) ?>
+           <?= $this->Form->hidden('form_id', ['id' => 'form-id', 'value' => $form->id]) ?>
            <button type="button" id="click" class="btn"><?= _('Add question') ?></button>
          <?= $this->Form->end() ?>
        <?= $this->Modal->end() ?>
@@ -91,7 +91,8 @@ $(document).ready(function(){
   $('#click').click(function(){
     var data = {
       label : $('.question-label').val(),
-      type  : 'radio'
+      type  : 'radio',
+      form_id : $('#form-id').val(),
     };
     $.ajax({
       type: 'post',
