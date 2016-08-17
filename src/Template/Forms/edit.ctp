@@ -141,7 +141,7 @@
 
         <?php
             // Here starts modal for Options
-            echo $this->Modal->create("Add Question", ['id' => 'ModalQuestions', 'close' => false]) ;
+            echo $this->Modal->create("Add Question", ['id' => 'ModalOptions', 'close' => false]) ;
         ?>
             <?= $this->Form->create(null, ['url' => ['controller' => 'Options', 'action' => 'add']]) ?>
             <fieldset>
