@@ -55,7 +55,7 @@ class FormsController extends AppController
           return $q->where(['Generations.id' => $user->generation_id]);
         });
 
-        $questions = TableRegistry::get('FormsQuestions');
+        $questions = TableRegistry::get('Questions');
         $answers = TableRegistry::get('QuestionsUsers');
 
         foreach ( $forms as $form){
