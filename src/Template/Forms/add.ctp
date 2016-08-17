@@ -28,7 +28,9 @@
 </div>
 
 <div id="question-form" class="container-fluid hidden">
-  
+  <div class="row">
+    
+  </div>
 </div>
 
 
@@ -72,7 +74,8 @@ $(document).ready(function(){
             $('#options-'+respuesta['id'] + ' #hyde').val(respuesta['id']);
 
             $('#additional-opts .form-group').append('<div class="checkbox"><label for="questions-ids-' + respuesta['id'] + '"><input type="checkbox" checked="checked" name="questions[_ids][]" value="' + respuesta['id'] + '" id="questions-ids-' + respuesta['id'] + '">' + respuesta['label'] + '</label></div>');*/
-            $('#question-form').append('<div clas="row"><div class="col-lg-12"><h3>' + respuesta['label'] + '</h3></div></div>').removeClass('hidden');
+            $('#question-form .row').append('<div clas="row"><div class="col-lg-12"><h3>' + respuesta['label'] + '</h3></div></div>');
+            $('#question-form').removeClass('hidden');
             $('#cf-question').addClass('hidden');
 
           }else{
