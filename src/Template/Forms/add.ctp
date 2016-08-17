@@ -43,6 +43,15 @@
           <button type="button" id="click" class="btn"><?= _('Add question') ?></button>
         <?= $this->Form->end() ?>    
       </div>
+
+      <div id="cf-options" class="container-fluid hidden">
+        <?= $this->Form->create() ?>
+          <?= $this->Form->input('text', ['id' => 'option-text']) ?>
+          <?= $this->Form->input('value', ['id' => 'option-value']) ?>
+          <?= $this->Form->hidden('queston_id', ['id' => 'question-id', 'value' => ""]) ?>
+          <button type="button" id="click" class="btn"><?= _('Add question') ?></button>
+        <?= $this->Form->end() ?>    
+      </div>      
 <?php endif; ?>
 
 
@@ -77,7 +86,8 @@ $(document).ready(function(){
             $('#question-form .row').append('<div clas="row"><div class="col-lg-12"><h3>' + respuesta['label'] + '</h3></div></div>');
             $('#question-form').removeClass('hidden');
             $('#cf-question').addClass('hidden');
-
+            $('#question-id').val(respuesta['id']);
+            $('#cf-options').removeClass('hidden');
           }else{
             toastr.error("FAILED!!");
           }
@@ -91,9 +101,9 @@ $(document).ready(function(){
 
   $('#add-opt').click(function(){
     var data = {
-      text : $('#questions-grid #text').val(),
-      value  : $('#questions-grid #value').val(),
-      question_id : $('#questions-grid #hyde').val()
+      text : $('#option-text').val(),
+      value  : $('#option-value').val(),
+      question_id : $('#question-id').val()
     };
     $.ajax({
       type: 'post',
