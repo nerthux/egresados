@@ -34,13 +34,16 @@
 </div>
 
 <!-- Here starts hidden modals -->
+<?php if ($form->id): ?>
+       <?= $this->Modal->create(_('Add a new question'), ['id' => 'MyModal1', 'close' => false]) ?> 
+         <?= $this->Form->create() ?>
+           <?= $this->Form->input('label', ['class' => 'question-label']) ?>
+           <?= $this->Form->hidden('form_id', ['class' => 'question-label', 'value' => $form->id]) ?>
+           <button type="button" id="click" class="btn"><?= _('Add question') ?></button>
+         <?= $this->Form->end() ?>
+       <?= $this->Modal->end() ?>
+<?php endif; ?>
 
-<?= $this->Modal->create(_('Add a new question'), ['id' => 'MyModal1', 'close' => false]) ?> 
-  <?= $this->Form->create() ?>
-    <?= $this->Form->input('label', ['class' => 'question-label']) ?>
-    <button type="button" id="click" class="btn"><?= _('Add question') ?></button>
-  <?= $this->Form->end() ?>
-<?= $this->Modal->end() ?>
 
 <!-- This hidden div is used inside the modal for options -->
 
