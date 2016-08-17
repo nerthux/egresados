@@ -41,7 +41,7 @@
             <p><strong><?= $question->label ?></strong></p>
             
           </div>
-          <?php foreach($question->options as $option)?>
+          <?php foreach($question->options as $option):?>
             <div class="col-lg-3 text-center"><p><?= $option->text ?></p></div> 
           <?php endforeach; ?>
       <?php endforeach; ?>
