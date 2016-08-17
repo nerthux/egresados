@@ -64,6 +64,9 @@ class QuestionsTable extends Table
         $validator
             ->requirePresence('type', 'create')
             ->notEmpty('type');
+        $validator
+            ->requirePresence('form_id', 'create')
+            ->notEmpty('form_id');
 
         return $validator;
     }

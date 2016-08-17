@@ -51,6 +51,7 @@ class QuestionsController extends AppController
         if ($this->request->is('ajax')) {
           if ($this->request->is('post')) {
             $question = $this->Questions->patchEntity($question, $this->request->data);
+            debug($question);
             if ($this->Questions->save($question)) {
               $response = [
                 'status' => '200',
