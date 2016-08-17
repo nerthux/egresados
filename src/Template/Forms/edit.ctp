@@ -38,7 +38,7 @@
     <div class="row">
       <?php foreach($form->questions as $question): ?>
           <div class="col-lg-12">
-            <p><strong><?= $question->label ?></strong></p>
+            <p><strong><?= $question->label ?></strong> <?= $this->Html->link('Add option', ['id' => 'add-opt', 'data-toggle' => 'modal', 'data-target' => '#ModalOptions', 'data-question' => $question->id]) ?></p>
             
           </div>
           <?php foreach($question->options as $option):?>
@@ -116,7 +116,7 @@
 
 
         <?php
-            // Here starts modal for Career
+            // Here starts modal for Questions
             echo $this->Modal->create("Add Question", ['id' => 'ModalQuestions', 'close' => false]) ;
         ?>
             <?= $this->Form->create(null, ['url' => ['controller' => 'Questions', 'action' => 'add']]) ?>
@@ -125,6 +125,30 @@
                     echo $this->Form->input('label');
                     echo $this->Form->hidden('type', ['value' => 'radio']);
                     echo $this->Form->hidden('form_id', ['value' => $form->id]);
+                    echo $this->Form->hidden('request', ['value' => 'form']);
+                ?>
+            </fieldset>
+            <?=  $this->Form->button(__('Submit'), ['class' => 'btn btn-primary block full-width m-b'])?>
+            <?= $this->Form->end() ?>
+
+
+        <?php
+            echo $this->Modal->end([
+                $this->Form->button('Close', ['data-dismiss' => 'modal'])
+            ]);
+            // End Modal for Careers
+        ?>
+
+        <?php
+            // Here starts modal for Options
+            echo $this->Modal->create("Add Question", ['id' => 'ModalQuestions', 'close' => false]) ;
+        ?>
+            <?= $this->Form->create(null, ['url' => ['controller' => 'Options', 'action' => 'add']]) ?>
+            <fieldset>
+                <?php
+                    echo $this->Form->input('text');
+                    echo $this->Form->input('value');
+                    echo $this->Form->hidden('question_id', ['value' => '']);
                     echo $this->Form->hidden('request', ['value' => 'form']);
                 ?>
             </fieldset>
