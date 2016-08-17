@@ -57,7 +57,7 @@
 
   <?= $this->Form->button('Add New Question', [
       'data-toggle' => 'modal',
-      'data-target' => '#MyModal1'
+      'data-target' => '#ModalQuestions'
     ]) ?>
   </div>
 </div>
@@ -101,6 +101,31 @@
                     echo $this->Form->hidden('form_id', ['value' => $form->id]);
                     echo $this->Form->hidden('src_controller', ['value' => 'Forms']);
                     echo $this->Form->hidden('src_action', ['value' => 'edit']);
+                ?>
+            </fieldset>
+            <?=  $this->Form->button(__('Submit'), ['class' => 'btn btn-primary block full-width m-b'])?>
+            <?= $this->Form->end() ?>
+
+
+        <?php
+            echo $this->Modal->end([
+                $this->Form->button('Close', ['data-dismiss' => 'modal'])
+            ]);
+            // End Modal for Careers
+        ?>
+
+
+        <?php
+            // Here starts modal for Career
+            echo $this->Modal->create("Add Question", ['id' => 'ModalQuestions', 'close' => false]) ;
+        ?>
+            <?= $this->Form->create(null, ['url' => ['controller' => 'Questions', 'action' => 'add']]) ?>
+            <fieldset>
+                <?php
+                    echo $this->Form->input('label');
+                    echo $this->Form->hidden('type', ['value' => 'radio']);
+                    echo $this->Form->hidden('form_id', ['value' => $form->id]);
+                    echo $this->Form->hidden('request', ['value' => 'form']);
                 ?>
             </fieldset>
             <?=  $this->Form->button(__('Submit'), ['class' => 'btn btn-primary block full-width m-b'])?>
