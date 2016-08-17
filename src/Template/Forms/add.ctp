@@ -49,7 +49,8 @@
           <?= $this->Form->input('text', ['id' => 'option-text']) ?>
           <?= $this->Form->input('value', ['id' => 'option-value']) ?>
           <?= $this->Form->hidden('queston_id', ['id' => 'question-id', 'value' => ""]) ?>
-          <button type="button" id="add-opt" class="btn"><?= _('Add question') ?></button>
+          <button type="button" id="add-opt" class="btn"><?= _('Add option') ?></button>
+          <button type="button" id="rtn-question" class="btn"><?= _('Add question') ?></button>
         <?= $this->Form->end() ?>    
       </div>      
 <?php endif; ?>
@@ -127,6 +128,12 @@ $(document).ready(function(){
           console.log(e);
         }
     });
+  });
+
+  $('#rtn-question').click(function(){
+    $('#question-id').val("");
+    $('#cf-options').addClass('hidden');
+    $('#cf-question').removeClass('hidden');
   });
 });
 </script>
