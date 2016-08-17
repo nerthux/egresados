@@ -49,7 +49,7 @@
           <?= $this->Form->input('text', ['id' => 'option-text']) ?>
           <?= $this->Form->input('value', ['id' => 'option-value']) ?>
           <?= $this->Form->hidden('queston_id', ['id' => 'question-id', 'value' => ""]) ?>
-          <button type="button" id="click" class="btn"><?= _('Add question') ?></button>
+          <button type="button" id="add-opt" class="btn"><?= _('Add question') ?></button>
         <?= $this->Form->end() ?>    
       </div>      
 <?php endif; ?>
@@ -117,6 +117,7 @@ $(document).ready(function(){
           console.log(respuesta);
           if(respuesta['status'] == 200){
             toastr.success(respuesta['msg']);
+            $('#question-form .row').append('<div clas="row"><div class="col-lg-3"><p>' + respuesta['text'] + '</p></div></div>');
           }else{
             toastr.error("FAILED!!");
           }
