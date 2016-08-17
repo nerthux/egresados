@@ -21,7 +21,10 @@
     </fieldset>
   </div>
   <div class="col-md-4">
-    <?= $this->Form->button(_('Add a new question'), ['data-toggle' => 'modal', 'data-target' => '#MyModal1']) ?>
+    <?php if ($form->id): ?>
+           <?= $this->Form->button(_('Add a new question'), ['data-toggle' => 'modal', 'data-target' => '#MyModal1']) ?>
+    <?php endif; ?>
+    
  </div>
 </div>
 
