@@ -34,7 +34,13 @@
 
 <div class="row  border-bottom white-bg dashboard-header">
   <div class="col-sm-7">
-
+    <h4><?=__('Questions')?></h4>
+    <div class="row">
+      <?php foreach($form->questions as $question): ?>
+          <?php debug($question); ?>
+          <h3><?= $questions->label ?></h3>
+      <?php endforeach; ?>
+    </div>
    </fieldset>
 
 <?=  $this->Form->button(__('Submit'), ['class' => 'btn btn-primary block full-width m-b'])?>
@@ -102,5 +108,8 @@
             ]);
             // End Modal for Careers
         ?>
+
+
+
            
 		</div>
