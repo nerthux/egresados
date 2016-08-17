@@ -36,10 +36,9 @@ class QuestionsTable extends Table
         $this->hasMany('Options', [
             'foreignKey' => 'question_id'
         ]);
-        $this->belongsToMany('Forms', [
-            'foreignKey' => 'question_id',
-            'targetForeignKey' => 'form_id',
-            'joinTable' => 'forms_questions'
+        $this->belongsTo('Forms', [
+            'foreignKey' => 'form_id',
+            'joinType' => 'INNER'
         ]);
         $this->belongsToMany('Users', [
             'through' =>  'QuestionsUsers'

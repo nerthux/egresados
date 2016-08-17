@@ -1,4 +1,4 @@
-<div class= row">
+<div class= "row">
   <div class="col-md-8">
     <?= $this->Form->create($form) ?>
     <fieldset>
@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<div class= row">
+<div class= "row">
   <div class="col-md-6">
     <?=  $this->Form->input('careers._ids', ['multiple' => 'checkbox']) ?>
   </div>
@@ -16,9 +16,8 @@
   </div>
 </div>
 
-<div class= row">
+<div class= "row">
   <div id="additional-opts" class="col-md-8">
-      <?=  $this->Form->input('questions._ids', ['multiple' => 'checkbox']) ?>
     </fieldset>
   </div>
   <div class="col-md-4">

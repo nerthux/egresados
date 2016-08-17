@@ -43,10 +43,8 @@ class FormsTable extends Table
             'targetForeignKey' => 'generation_id',
             'joinTable' => 'forms_generations'
         ]);
-        $this->belongsToMany('Questions', [
+        $this->hasMany('Questions', [
             'foreignKey' => 'form_id',
-            'targetForeignKey' => 'question_id',
-            'joinTable' => 'forms_questions'
         ]);
     }
 

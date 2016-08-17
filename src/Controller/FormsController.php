@@ -123,7 +123,6 @@ class FormsController extends AppController
         }
         $careers = $this->Forms->Careers->find('list', ['limit' => 200]);
         $generations = $this->Forms->Generations->find('list', ['limit' => 200]);
-        $questions = $this->Forms->Questions->find('list', ['limit' => 200]);
         $this->set(compact('form', 'careers', 'generations', 'questions'));
         $this->set('_serialize', ['form']);
     }
