@@ -37,8 +37,13 @@
     <h4><?=__('Questions')?></h4>
     <div class="row">
       <?php foreach($form->questions as $question): ?>
-          <?php debug($question); ?>
-          <h3><?= $questions->label ?></h3>
+          <div class="col-lg-12">
+            <p><strong><?= $question->label ?></strong></p>
+            
+          </div>
+          <?php foreach($question->options as $option)?>
+            <div class="col-lg-3 text-center"><p><?= $option->text ?></p></div> 
+          <?php endforeach; ?>
       <?php endforeach; ?>
     </div>
    </fieldset>
