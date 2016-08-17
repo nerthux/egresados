@@ -79,7 +79,7 @@ class OptionsController extends AppController
         $option = $this->Options->patchEntity($option, $this->request->data);
         if($this->Options->save($option)){
             $this->Flash->success(__('The option has been saved.'));
-            if($question->request == 'form')
+            if($option->request == 'form')
                 return $this->redirect(['controller' => 'forms',  'action' => 'edit', $option->form_id]);
 
             return $this->redirect(['action' => 'index']);
