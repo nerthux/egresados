@@ -73,20 +73,22 @@ class OptionsController extends AppController
             }
         }
         $this->set('response', json_encode($response));
-      }
+      }else{
+        if($this->request->is('post')){
+          $option = $this->Options->patchEntity($option, $this->request->data);
+          if($this->Options->save($option)){
+              $this->Flash->success(__('The option has been saved.'));
+              if($option->request == 'form')
+                  return $this->redirect(['controller' => 'forms',  'action' => 'edit', $option->form_id]);
 
-      if($this->request->is('post')){
-        $option = $this->Options->patchEntity($option, $this->request->data);
-        if($this->Options->save($option)){
-            $this->Flash->success(__('The option has been saved.'));
-            if($option->request == 'form')
-                return $this->redirect(['controller' => 'forms',  'action' => 'edit', $option->form_id]);
-
-            return $this->redirect(['action' => 'index']);
-        }else{
-            $this->Flash->error(__('The option could not be saved. Please, try again.'));
+              return $this->redirect(['action' => 'index']);
+          }else{
+              $this->Flash->error(__('The option could not be saved. Please, try again.'));
+          }
         }
       }
+
+      
       
     }
 
