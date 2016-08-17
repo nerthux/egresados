@@ -38,7 +38,7 @@
     <div class="row">
       <?php foreach($form->questions as $question): ?>
           <div class="col-lg-12">
-            <p><strong><?= $question->label ?></strong> <?= $this->Form->button('Add option', ['id' => 'add-opt', 'data-toggle' => 'modal', 'data-target' => '#ModalOptions', 'data-question' => $question->id]) ?></p>
+            <p><strong><?= $question->label ?></strong> <?= $this->Form->button('Add option', ['class' => 'add-opt', 'data-toggle' => 'modal', 'data-target' => '#ModalOptions', 'data-question' => $question->id]) ?></p>
             
           </div>
           <?php foreach($question->options as $option):?>
@@ -148,7 +148,8 @@
                 <?php
                     echo $this->Form->input('text');
                     echo $this->Form->input('value');
-                    echo $this->Form->hidden('question_id', ['value' => '']);
+                    echo $this->Form->hidden('question_id', ['id' => 'question-id','value' => '']);
+                    echo $this->Form->hidden('form_id', ['value' => $form->id]);
                     echo $this->Form->hidden('request', ['value' => 'form']);
                 ?>
             </fieldset>
@@ -167,3 +168,10 @@
 
            
 		</div>
+<script>
+  $(document).ready(function(){
+    $('.add-opt').click(function(){
+      $('#question-id').val($(this).data('question'));
+    });
+  });
+</script>
