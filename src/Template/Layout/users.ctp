@@ -8,7 +8,7 @@ if($this->request->session()->read('Auth.User.email_verified'))
 if($this->request->session()->read('Auth.User.sms_verified'))
     $steps_verifications_user +=1;
 
- $total_percent = (($steps_verifications_user/$steps_verifications)*100);
+ $total_percent = round((($steps_verifications_user/$steps_verifications)*100));
 ?>
 
 <!DOCTYPE html>

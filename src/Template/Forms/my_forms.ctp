@@ -13,7 +13,7 @@
             <?php
               $total_answer = $total_answers[$form->id];
               $total_question = $total_questions[$form->id];
-              $total_percent = (($total_answer/$total_question)*100);
+              $total_percent = round((($total_answer/$total_question)*100));
             ?>
             <tr>
                 <td><?= h($form->name) ?></td>
