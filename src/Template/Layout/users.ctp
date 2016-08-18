@@ -66,6 +66,17 @@
                                 <li class="divider"></li>
                                 <li><a href="/users/logout">Logout</a></li>
                             </ul>
+                            <?php if ($this->request->session()->read('Auth.User.email_verified')): ?>
+                              <div class=""><i class="fa fa-check-circle" aria-hidden="true"></i>Aww Yeah!!! Tu email fue validado </div>
+                            <?php else: ?>
+                              <div class=""><i class="fa fa-check-circle" aria-hidden="true"></i>Oh no!!! Tu email no esta verificado </div>
+                            <?php endif; ?>
+
+                            <?php if ($this->request->session()->read('Auth.User.sms_verified')): ?>
+                                <div class=""><i class="fa fa-check-circle" aria-hidden="true"></i> Yuhuuuuu!!! Tu teléfono móvil fue verificado </div>
+                            <?php else: ?>
+                              <div class=""><i class="fa fa-check-circle" aria-hidden="true"></i> Buuuuuuu!!! Tu teléfono móvil no esta verificado </div>
+                            <?php endif; ?>
                         </div>
                         <div class="logo-element">
                             ITT

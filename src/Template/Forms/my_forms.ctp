@@ -1,16 +1,3 @@
-<?php if ($this->request->session()->read('Auth.User.email_verified')): ?>
-  <div class="alert-success lead bold"> Aww Yeah!!! Tu email fue validado </div>
-<?php else: ?>
-  <div class="alert-danger lead bold"> Oh no!!! Tu email no esta verificado </div>
-<?php endif; ?>
-
-<?php if ($this->request->session()->read('Auth.User.sms_verified')): ?>
-    <div class="alert-success lead bold"> Yuhuuuuu!!! Tu teléfono móvil fue verificado </div>
-<?php else: ?>
-  <div class="alert-danger lead bold"> Buuuuuuu!!! Tu teléfono móvil no esta verificado </div>
-<?php endif; ?>
-
-
 <div class="forms index large-9 medium-8 columns content">
     <h3><?= __('Forms') ?></h3>
     <table class="table table-striped">
