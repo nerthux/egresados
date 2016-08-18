@@ -67,15 +67,15 @@
                                 <li><a href="/users/logout">Logout</a></li>
                             </ul>
                             <?php if ($this->request->session()->read('Auth.User.email_verified')): ?>
-                              <div class=""><i class="fa fa-check-circle" aria-hidden="true"></i>Aww Yeah!!! Tu email fue validado </div>
+                              <div class="text-white"><i class="fa fa-check-circle" aria-hidden="true" style="color: #1ab394"></i> Email verificado </div>
                             <?php else: ?>
-                              <div class=""><i class="fa fa-check-circle" aria-hidden="true"></i>Oh no!!! Tu email no esta verificado </div>
+                              <div ><i class="fa fa-check-circle" aria-hidden="true"></i> Email verificado </div>
                             <?php endif; ?>
 
                             <?php if ($this->request->session()->read('Auth.User.sms_verified')): ?>
-                                <div class=""><i class="fa fa-check-circle" aria-hidden="true"></i> Yuhuuuuu!!! Tu teléfono móvil fue verificado </div>
+                                <div class="text-white"><i class="fa fa-check-circle" aria-hidden="true" style="color: #1ab394"></i> Teléfono móvil verificado </div>
                             <?php else: ?>
-                              <div class=""><i class="fa fa-check-circle" aria-hidden="true"></i> Buuuuuuu!!! Tu teléfono móvil no esta verificado </div>
+                              <div class=""><i class="fa fa-check-circle" aria-hidden="true"></i> Teléfono móvil verificado </div>
                             <?php endif; ?>
                         </div>
                         <div class="logo-element">
