@@ -1,4 +1,15 @@
-<?php $cakeDescription = 'Sistema seguimiento de egresados ITT'; ?>
+<?php 
+$cakeDescription = 'Sistema seguimiento de egresados ITT';
+$steps_verifications = 3;
+$steps_verifications_user = 0;
+if($this->request->session()->read('Auth.User.email_verified'))
+    $steps_verifications_user +=1;
+
+if($this->request->session()->read('Auth.User.sms_verified'))
+    $steps_verifications_user +=1;
+
+ $total_percent = (($steps_verifications_user/$steps_verifications)*100);
+?>
 
 <!DOCTYPE html>
 <html>
@@ -66,6 +77,13 @@
                                 <li class="divider"></li>
                                 <li><a href="/users/logout">Logout</a></li>
                             </ul>
+
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="<?= $total_percent ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?= $total_percent ?>%">
+                                    <span ><?= $steps_verifications_user . " de " . $steps_verifications_ . " " . $total_percent ?>% Complete</span>
+                              </div>
+                            </div>
+
                             <?php if ($this->request->session()->read('Auth.User.email_verified')): ?>
                               <div class="text-white"><i class="fa fa-check-circle" aria-hidden="true" style="color: #1ab394"></i> Email verificado </div>
                             <?php else: ?>
