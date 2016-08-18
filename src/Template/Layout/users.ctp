@@ -80,7 +80,7 @@ if($this->request->session()->read('Auth.User.sms_verified'))
 
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="<?= $total_percent ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?= $total_percent ?>%">
-                                    <span ><?= $steps_verifications_user . " de " . $steps_verifications_ . " " . $total_percent ?>% Complete</span>
+                                    <span ><?= $steps_verifications_user . " de " . $steps_verifications . " " . $total_percent ?>% Complete</span>
                               </div>
                             </div>
 
