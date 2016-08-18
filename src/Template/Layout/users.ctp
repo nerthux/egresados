@@ -54,7 +54,7 @@
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav metismenu" id="side-menu">
-                    <li class="nav-header">
+                    <li class="nav-header" style="background-size:cover">
                         <div class="dropdown profile-element"> <span>
                             <img alt="image" class="img-circle" src="/img/profile_small.png" />
                              </span>
