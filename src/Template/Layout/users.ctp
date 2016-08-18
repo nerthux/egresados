@@ -78,6 +78,7 @@ if($this->request->session()->read('Auth.User.sms_verified'))
                                 <li><a href="/users/logout">Logout</a></li>
                             </ul>
                         </div>
+                        <br>
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" aria-valuenow="<?= $total_percent ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?= $total_percent ?>%">
                                 <span ><?= $steps_verifications_user . " de " . $steps_verifications . " " . $total_percent ?>% Complete</span>
