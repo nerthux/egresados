@@ -77,25 +77,24 @@ if($this->request->session()->read('Auth.User.sms_verified'))
                                 <li class="divider"></li>
                                 <li><a href="/users/logout">Logout</a></li>
                             </ul>
-
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="<?= $total_percent ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?= $total_percent ?>%">
-                                    <span ><?= $steps_verifications_user . " de " . $steps_verifications . " " . $total_percent ?>% Complete</span>
-                              </div>
-                            </div>
-
-                            <?php if ($this->request->session()->read('Auth.User.email_verified')): ?>
-                              <div class="text-white"><i class="fa fa-check-circle" aria-hidden="true" style="color: #1ab394"></i> Email verificado </div>
-                            <?php else: ?>
-                              <div ><i class="fa fa-check-circle" aria-hidden="true"></i> Email verificado </div>
-                            <?php endif; ?>
-
-                            <?php if ($this->request->session()->read('Auth.User.sms_verified')): ?>
-                                <div class="text-white"><i class="fa fa-check-circle" aria-hidden="true" style="color: #1ab394"></i> Teléfono móvil verificado </div>
-                            <?php else: ?>
-                              <div class=""><i class="fa fa-check-circle" aria-hidden="true"></i> Teléfono móvil verificado </div>
-                            <?php endif; ?>
                         </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="<?= $total_percent ?>" aria-valuemin="0" aria-valuemax="100" style="width:<?= $total_percent ?>%">
+                                <span ><?= $steps_verifications_user . " de " . $steps_verifications . " " . $total_percent ?>% Complete</span>
+                          </div>
+                        </div>
+
+                        <?php if ($this->request->session()->read('Auth.User.email_verified')): ?>
+                          <div class="text-white"><i class="fa fa-check-circle" aria-hidden="true" style="color: #1ab394"></i> Email verificado </div>
+                        <?php else: ?>
+                          <div ><i class="fa fa-check-circle" aria-hidden="true"></i> Email verificado </div>
+                        <?php endif; ?>
+
+                        <?php if ($this->request->session()->read('Auth.User.sms_verified')): ?>
+                            <div class="text-white"><i class="fa fa-check-circle" aria-hidden="true" style="color: #1ab394"></i> Teléfono móvil verificado </div>
+                        <?php else: ?>
+                          <div class=""><i class="fa fa-check-circle" aria-hidden="true"></i> Teléfono móvil verificado </div>
+                        <?php endif; ?>
                         <div class="logo-element">
                             ITT
                         </div>
