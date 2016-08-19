@@ -61,22 +61,25 @@ if($this->request->session()->read('Auth.User.sms_verified'))
 </head>
 
 <body>
-    <div class="container">
-    <div class="row" >
-      <div class="logo-tnm col-md-4 col-sd-4 col-xs-3" >
-         <a href="http://tectijuana.edu.mx"><img src="/img/header-sep.png"></a>
-      </div>
-       <div class="text-tnm text-center col-md-5 col-sd-6 col-xs-4">
-         <h3>Tecnológico Nacional de México</h3>
-        <h4>Instituto Tecnológico de Tijuana</h4>
-      </div>
-      <div class="logo-itt text-center col-md-2 col-sd-2">
-        <a href="http://tectijuana.edu.mx">
-           <img src="/img/logo_ITT1.png" title="Instituto Tecnológico de Tijuana" alt="Instituto Tecnológico de Tijuana">
-        </a>
-      </div><!--logo-->
+    <div style="background-color: #fff">
+        <div class="container">
+        <div class="row" >
+          <div class="logo-tnm col-md-4 col-sd-4 col-xs-3" >
+             <a href="http://tectijuana.edu.mx"><img src="/img/header-sep.png"></a>
+          </div>
+           <div class="text-tnm text-center col-md-5 col-sd-6 col-xs-4">
+             <h3>Tecnológico Nacional de México</h3>
+            <h4>Instituto Tecnológico de Tijuana</h4>
+          </div>
+          <div class="logo-itt text-center col-md-2 col-sd-2">
+            <a href="http://tectijuana.edu.mx">
+               <img src="/img/logo_ITT1.png" title="Instituto Tecnológico de Tijuana" alt="Instituto Tecnológico de Tijuana">
+            </a>
+          </div><!--logo-->
+        </div>
+        </div>
     </div>
-    </div>
+    
     <div id="wrapper">
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
