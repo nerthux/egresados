@@ -35,7 +35,7 @@
 
 @media only screen and (max-width: 992px){
   .container-header{
-    height: 71px;
+    height: 108px;
   }
 
   .logo-tnm img {
@@ -45,7 +45,7 @@
   .text-tnm       { width: 60%; padding-top: 15px; margin-top: -20px !important; }
 
   .header-users{
-    padding-top: 30px;
+    padding-top: 43px;
   }
 
   .logo-itt img {
@@ -58,4 +58,7 @@
   .logo-tnm       { display: none; height: 0px !important;  }
   .text-tnm       { width: 100%; padding-top: 5px; margin-top: -20px !important; }
   .logo-itt       { display: none; height: 0px !important;  }
+  .header-users{
+    padding-top: 43px;
+  }
 }
