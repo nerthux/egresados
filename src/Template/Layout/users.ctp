@@ -62,7 +62,7 @@ if($this->request->session()->read('Auth.User.sms_verified'))
 
 <body>
     <div style="background-color: #fff">
-        <div class="container">
+        <div class="container" class="container-header">
         <div class="row" >
           <div class="logo-tnm col-md-4 col-sd-4 col-xs-3" >
              <a href="http://tectijuana.edu.mx"><img src="/img/header-sep.png"></a>
