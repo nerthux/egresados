@@ -16,7 +16,7 @@
   text-transform: uppercase;
 }
 
-.container-header > .text-tnm{
+.header-users{
   padding-top: 36px;
 }
 
@@ -44,7 +44,7 @@
   }
   .text-tnm       { width: 60%; padding-top: 15px; margin-top: -20px !important; }
 
-  .container-header > .text-tnm{
+  .header-users{
     padding-top: 30px;
   }
 

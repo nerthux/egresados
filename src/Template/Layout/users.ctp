@@ -67,7 +67,7 @@ if($this->request->session()->read('Auth.User.sms_verified'))
           <div class="logo-tnm col-md-4 col-sd-4 col-xs-3" >
              <a href="http://tectijuana.edu.mx"><img src="/img/header-sep.png"></a>
           </div>
-           <div class="text-tnm text-center col-md-5 col-sd-6 col-xs-4">
+           <div class="text-tnm header-users text-center col-md-5 col-sd-6 col-xs-4">
              <h3>Tecnológico Nacional de México</h3>
             <h4>Instituto Tecnológico de Tijuana</h4>
           </div>
