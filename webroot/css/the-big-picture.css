@@ -18,30 +18,6 @@
   height: 600px;
 }
 
-.logo-tnm {
-  height: 120px;
-}
-
-.text-tnm {
-  color: #616161;
-  font-family: "SoberanaSans-Bold" !important;
-  font-size: 20px !important;
-  line-height: 28px;
-  padding-top: 20px;
-  text-align: center;
-  text-transform: uppercase;
-}
-.logo-itt {
-  display: table-row;
-  height: 120px !important;
-  vertical-align: middle !important;
-  width: auto;
-}
-
-.logo-itt img {
-  height: 100px !important;
-  margin: 20px auto 0 auto !important;
-}
 
 .highlighted {
   background-color: rgba(80,80,80,.5);
@@ -61,23 +37,9 @@
 
 .fill { min-height: 100%; height: 100%; padding: 25px; }
 
-@media only screen and (max-width: 992px){
-  .logo-tnm img {
-    height: 80px !important;
-    margin: 20px auto 0 auto !important;
-  }
-  .text-tnm       { width: 60%; padding-top: 15px; margin-top: -20px !important; }
 
-  .logo-itt img {
-  height: 80px !important;
-  margin: 20px auto 0 auto !important;
-  }
-}
 
 @media only screen and (max-width: 768px){
-  .logo-tnm       { display: none; height: 0px !important;  }
-  .text-tnm       { width: 100%; padding-top: 5px; margin-top: -20px !important; }
-  .logo-itt       { display: none; height: 0px !important;  }
 
   .full {
     background: url(/img/tectijuana-galgoblur-65.png); 
