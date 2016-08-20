@@ -10,7 +10,6 @@ use Cake\Validation\Validator;
 /**
  * Careers Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Departments
  * @property \Cake\ORM\Association\HasMany $Users
  * @property \Cake\ORM\Association\BelongsToMany $Forms
  */
@@ -33,10 +32,6 @@ class CareersTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Departments', [
-            'foreignKey' => 'department_id',
-            'joinType' => 'INNER'
-        ]);
         $this->hasMany('Users', [
             'foreignKey' => 'career_id'
         ]);
@@ -56,7 +51,7 @@ class CareersTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->add('id', 'valid', ['rule' => 'numeric'])
+            ->integer('id')
             ->allowEmpty('id', 'create');
 
         $validator
@@ -81,7 +76,6 @@ class CareersTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['code']));
-        $rules->add($rules->existsIn(['department_id'], 'Departments'));
         return $rules;
     }
 }

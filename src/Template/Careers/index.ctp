@@ -5,7 +5,8 @@
             <tr>
                 <th><?= $this->Paginator->sort('code') ?></th>
                 <th><?= $this->Paginator->sort('name') ?></th>
-                <th><?= $this->Paginator->sort('department_id') ?></th>
+                <th><?= $this->Paginator->sort('created') ?></th>
+                <th><?= $this->Paginator->sort('modified') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -14,7 +15,8 @@
             <tr>
                 <td><?= h($career->code) ?></td>
                 <td><?= h($career->name) ?></td>
-                <td><?= $career->has('department') ? $this->Html->link($career->department->name, ['controller' => 'Departments', 'action' => 'view', $career->department->id]) : '' ?></td>
+                <td><?= h($career->created) ?></td>
+                <td><?= h($career->modified) ?></td>
                 <td class="actions">
                     <?= $this->Html->link($this->Html->icon('file'), ['action' => 'view', $career->id], ['escape' => false]) ?>
                     <?= $this->Html->link($this->Html->icon('edit'), ['action' => 'edit', $career->id], ['escape' => false]) ?>

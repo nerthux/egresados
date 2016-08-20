@@ -14,14 +14,13 @@ class CareersController extends AppController
     /**
      * Index method
      *
-     * @return void
+     * @return \Cake\Network\Response|null
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['Departments']
-        ];
-        $this->set('careers', $this->paginate($this->Careers));
+        $careers = $this->paginate($this->Careers);
+
+        $this->set(compact('careers'));
         $this->set('_serialize', ['careers']);
     }
 
@@ -29,14 +28,15 @@ class CareersController extends AppController
      * View method
      *
      * @param string|null $id Career id.
-     * @return void
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @return \Cake\Network\Response|null
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
     {
         $career = $this->Careers->get($id, [
-            'contain' => ['Departments', 'Forms', 'Users']
+            'contain' => ['Forms', 'Users']
         ]);
+
         $this->set('career', $career);
         $this->set('_serialize', ['career']);
     }
@@ -44,7 +44,7 @@ class CareersController extends AppController
     /**
      * Add method
      *
-     * @return void Redirects on successful add, renders view otherwise.
+     * @return \Cake\Network\Response|void Redirects on successful add, renders view otherwise.
      */
     public function add()
     {
@@ -58,9 +58,8 @@ class CareersController extends AppController
                 $this->Flash->error(__('The career could not be saved. Please, try again.'));
             }
         }
-        $departments = $this->Careers->Departments->find('list', ['limit' => 200]);
         $forms = $this->Careers->Forms->find('list', ['limit' => 200]);
-        $this->set(compact('career', 'departments', 'forms'));
+        $this->set(compact('career', 'forms'));
         $this->set('_serialize', ['career']);
     }
 
@@ -68,7 +67,7 @@ class CareersController extends AppController
      * Edit method
      *
      * @param string|null $id Career id.
-     * @return void Redirects on successful edit, renders view otherwise.
+     * @return \Cake\Network\Response|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Network\Exception\NotFoundException When record not found.
      */
     public function edit($id = null)
@@ -85,9 +84,8 @@ class CareersController extends AppController
                 $this->Flash->error(__('The career could not be saved. Please, try again.'));
             }
         }
-        $departments = $this->Careers->Departments->find('list', ['limit' => 200]);
         $forms = $this->Careers->Forms->find('list', ['limit' => 200]);
-        $this->set(compact('career', 'departments', 'forms'));
+        $this->set(compact('career', 'forms'));
         $this->set('_serialize', ['career']);
     }
 
@@ -96,7 +94,7 @@ class CareersController extends AppController
      *
      * @param string|null $id Career id.
      * @return \Cake\Network\Response|null Redirects to index.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)
     {
