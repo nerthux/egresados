@@ -27,6 +27,8 @@
 <?= $this->Html->css('jquery.switch.css') ?>
 <?= $this->Html->css('owl.carousel.css') ?>
 <?= $this->Html->css('owl.theme.css') ?>
+<?= $this->Html->css('header.css') ?>
+<?= $this->Html->css('the-big-picture.css') ?>
 
 <!-- Google web font -->
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
@@ -47,20 +49,63 @@
 
 <?= $this->fetch('meta') ?>
 <?= $this->fetch('css') ?>
-
+<?= $this->fetch('script') ?>
 </head>
 <body>
-
-  <header>
     <div class="container">
-      <div class="row">
-        <div class="col-md-4 col-xs-3" id="logo"><a href="#">Seguimiento Egresados ITT</a></div>
-      </div><!-- End row -->
-    </div><!-- End container -->
-  </header> <!-- End header -->
-
-  <?= $this->fetch('content') ?>
-
+    <div id="headeritt" class="row" >
+      <div class="logo-tnm col-md-4 col-sd-4 col-xs-3" >
+         <a href="http://tectijuana.edu.mx"><img src="/img/header-sep.png"></a>
+      </div>
+       <div class="text-tnm text-center col-md-5 col-sd-6 col-xs-4">
+         <h3>Tecnológico Nacional de México</h3>
+        <h4>Instituto Tecnológico de Tijuana</h4>
+      </div>
+      <div class="logo-itt text-center col-md-2 col-sd-2">
+        <a href="http://tectijuana.edu.mx">
+           <img src="/img/logo_ITT1.png" title="Instituto Tecnológico de Tijuana" alt="Instituto Tecnológico de Tijuana">
+        </a>
+      </div><!--logo-->
+    </div>
+    </div>
+     <!-- Navigation -->
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- /.container -->
+      <div class="pull-right">
+        <?= $this->request->session()->read('Auth.User.first_name').' '. $this->request->session()->read('Auth.User.last_name') ?>
+      </div>
+    </nav>
+     <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Egresados ITT</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li>
+                  <a href="#">Aviso de Privacidad</a>
+                </li>
+               <li>
+                  <a href="#">Contacto</a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+  <div class="container">
+    <?= $this->fetch('content') ?>
+  <div>
 <footer>
   <section class="container">
     <div class="row">

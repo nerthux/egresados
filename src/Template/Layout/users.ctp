@@ -63,7 +63,7 @@ if($this->request->session()->read('Auth.User.sms_verified'))
 <body>
     <div style="background-color: #fff">
         <div class="container container-header" >
-        <div class="row" >
+        <div id="headeritt" class="row" >
           <div class="logo-tnm col-md-4 col-sd-4 col-xs-3" >
              <a href="http://tectijuana.edu.mx"><img src="/img/header-sep.png"></a>
           </div>
@@ -105,13 +105,13 @@ if($this->request->session()->read('Auth.User.sms_verified'))
                         </div>
 
                         <?php if ($this->request->session()->read('Auth.User.email_verified')): ?>
-                          <div class="text-white"><i class="fa fa-check-circle" aria-hidden="true" style="color: #1ab394"></i> Email verificado </div>
+                          <div class="text-white"><i class="fa fa-check-circle" aria-hidden="true" style="color: #2c892c"></i> Email verificado </div>
                         <?php else: ?>
                           <div ><i class="fa fa-check-circle" aria-hidden="true"></i> Email verificado </div>
                         <?php endif; ?>
 
                         <?php if ($this->request->session()->read('Auth.User.sms_verified')): ?>
-                            <div class="text-white"><i class="fa fa-check-circle" aria-hidden="true" style="color: #1ab394"></i> Teléfono móvil verificado </div>
+                            <div class="text-white"><i class="fa fa-check-circle" aria-hidden="true" style="color: #2c892c"></i> Teléfono móvil verificado </div>
                         <?php else: ?>
                           <div class=""><i class="fa fa-check-circle" aria-hidden="true"></i> Teléfono móvil verificado </div>
                         <?php endif; ?>

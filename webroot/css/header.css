@@ -54,6 +54,17 @@
   }
 }
 
+
+#headeritt h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+}
+
+#headeritt h4 {
+  font-size: 18px;
+}
+
 @media only screen and (max-width: 768px){
   .logo-tnm       { display: none; height: 0px !important;  }
   .text-tnm       { width: 100%; padding-top: 5px; margin-top: -20px !important; }

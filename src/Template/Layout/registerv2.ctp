@@ -30,7 +30,7 @@
 
 <body>
     <div class="container">
-      <div class="row" >
+      <div id="headeritt" class="row" >
         <div class="logo-tnm col-md-4 col-sd-4 col-xs-3" >
            <a href="http://tectijuana.edu.mx"><img src="/img/header-sep.png"></a>
         </div>
