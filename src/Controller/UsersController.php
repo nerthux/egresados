@@ -132,10 +132,12 @@ class UsersController extends AppController
      */
     public function profile()
     {
+        $this->viewBuilder()->layout('users');
         $user = $this->Users->get($this->Auth->user('id'));
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->data);
             if ($this->Users->save($user)) {
+                $this->request->session()->write('Auth.User.mobile_phone_number', $user->mobile_phone_number);
                 $this->Flash->success(__('The user has been saved.'));
             } else {
                 $this->Flash->error(__('The user could not be saved. Please, try again.'));
@@ -188,9 +190,9 @@ class UsersController extends AppController
             $email->template('confirmation')
                   ->emailFormat('text')
                   ->to($user->email)
-                  ->from('gcovarrubias@c4-technologies.com');
+                  ->from('egresados@tectijuana.edu.mx');
             $validate_url = "http://www.egresadositt.com/users/validateEmail/$user->id/$user->email_validation_code";
-            $email->viewVars(['first_name' => $user->first_name, 'email_validation_code' => $validate_url]);
+            $email->viewVars(['first_name' => $user->first_name, 'email_validation_code' => $validate_url, 'user_name' => $user->username]);
             $email->send();
             $this->Flash->success(__('The user has been saved.'));
               return $this->redirect(['controller' => 'Pages', 'action' => 'success']);
@@ -230,15 +232,13 @@ class UsersController extends AppController
       // If User sends the verification code
       if ($this->request->is('post')) {
         $data = $this->request->data;
-        debug($data);
-        debug($user);
         if ( $data['sms_input_code'] == $user->sms_validation_code)
         {
-          debug($data);
           $user->sms_verified = 1;
+          $this->request->session()->write('Auth.User.sms_verified', 1);
           if ($this->Users->save($user)) {
             $this->Flash->success(__('The user has been saved.'));
-            return $this->redirect(['controller' => 'Pages', 'action' => 'success']);
+            return $this->redirect(['controller' => 'forms', 'action' => 'my-forms']);
           } else {
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
           }

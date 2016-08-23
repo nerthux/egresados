@@ -11,7 +11,8 @@
         "cakephp/migrations": "~1.0",
         "cakephp/plugin-installer": "*",
         "cake17/cakephp-recaptcha": "dev-master",
-    	"holt59/cakephp3-bootstrap-helpers": "dev-master"
+        "holt59/cakephp3-bootstrap-helpers": "dev-master"
+
 
 
     },
@@ -39,6 +40,6 @@
         "post-install-cmd": "App\\Console\\Installer::postInstall",
         "post-autoload-dump": "Cake\\Composer\\Installer\\PluginInstaller::postAutoloadDump"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }

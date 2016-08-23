@@ -28,6 +28,7 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+    <?= $this->Html->link( __('Add Career'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
     <div class="paginator">
         <ul class="pagination">
             <?= $this->Paginator->prev('< ' . __('previous')) ?>

@@ -8,6 +8,9 @@ if($this->request->session()->read('Auth.User.email_verified'))
 if($this->request->session()->read('Auth.User.sms_verified'))
     $steps_verifications_user +=1;
 
+if( strlen($this->request->session()->read('Auth.User.mobile_phone_number')) == 10)
+      $steps_verifications_user +=1;
+
  $total_percent = round((($steps_verifications_user/$steps_verifications)*100));
 ?>
 
@@ -110,10 +113,19 @@ if($this->request->session()->read('Auth.User.sms_verified'))
                           <div ><i class="fa fa-check-circle" aria-hidden="true"></i> Email verificado </div>
                         <?php endif; ?>
 
-                        <?php if ($this->request->session()->read('Auth.User.sms_verified')): ?>
-                            <div class="text-white"><i class="fa fa-check-circle" aria-hidden="true" style="color: #2c892c"></i> Teléfono móvil verificado </div>
+
+                        <?php if (strlen($this->request->session()->read('Auth.User.mobile_phone_number')) == 10): ?>
+                          <div class="text-white"><i class="fa fa-check-circle" aria-hidden="true" style="color: #2c892c"></i> Celular registrado </div>
                         <?php else: ?>
-                          <div class=""><i class="fa fa-check-circle" aria-hidden="true"></i> Teléfono móvil verificado </div>
+                          <div class=""><i class="fa fa-check-circle" aria-hidden="true"></i>Celular registrado 
+                                      <?= $this->Html->link(_('Agregar'), '/users/profile', ['role' => 'button', 'class' => "verify"]) ?></div>
+                        <?php endif; ?>
+
+                        <?php if ($this->request->session()->read('Auth.User.sms_verified')): ?>
+                            <div class="text-white"><i class="fa fa-check-circle" aria-hidden="true" style="color: #2c892c"></i> Celular verificado </div>
+                        <?php else: ?>
+                          <div class=""><i class="fa fa-check-circle" aria-hidden="true"></i> Celular verificado 
+                                      <?= $this->Html->link(_('Verificar'), '/users/sendSmsValidation', ['role' => 'button', 'class' => "verify"]) ?> </div>
                         <?php endif; ?>
                         <div class="logo-element">
                             ITT

@@ -13,7 +13,12 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 ?>
-<?= $first_name ?> :
+Hola <?= $first_name ?> :
 
-Muchas gracias por realizar su proceso de registro, su número de confirmación es el: 
+Muchas gracias por realizar su proceso de registro, por favor, ingresa a la siguiente url para validar tu email:
 <?= $email_validation_code ?>
+
+Recuerda que tus datos de conexión son muy importantes, no los olvides para seguir accesando al sistema,
+te dejamos este atento recordatorio de tu nombre de usuario para que después puedas consultarlo.
+
+Usuario:  <?=  $user_name ?>

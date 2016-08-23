@@ -8,7 +8,7 @@
 
         <div class="error-desc">
             Ahora puedes ingresar a tu cuenta con el usuario y contraseña que elegiste durant el registro. <br/>
-            <a href="/users/login" class="btn btn-primary m-t">Iniciar Sesión</a>
+            <a href="/users/register" class="btn btn-primary m-t">Iniciar Sesión</a>
         </div>
     </div>
 
@@ -20,7 +20,7 @@
 
         <div class="error-desc">
             Seguramente llegaste aqui por error, aqui no hay nada que ver.<br/>
-            Si eres usuario de la comunidad puedes ingresar en: <br/><a href="/users/login" class="btn btn-primary m-t">Iniciar Sesión</a>
+            Si eres usuario de la comunidad puedes ingresar en: <br/><a href="/users/register" class="btn btn-primary m-t">Iniciar Sesión</a>
         </div>
     </div>
 

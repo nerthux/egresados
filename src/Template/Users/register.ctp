@@ -40,8 +40,8 @@
                     ]) ?>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
-          <?= $this->Form->input('student_id_number', [
-                            'placeholder' => '#Control (Opcional)',
+          <?= $this->Form->input('mobile_phone_number', [
+                            'placeholder' => 'Celular (Opcional)',
                             'templates' => [
                               'formGroup' => '{{input}}']
                             ]) ?>
@@ -75,6 +75,15 @@
                           'templates' => [
                             'formGroup' => '{{input}}']
                           ]) ?>
+        </div>
+      </div>
+      <div class="row" >
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <?= $this->Form->input('student_id_number', [
+                         'placeholder' => '#Control (Opcional)',
+                         'templates' => [
+                            'formGroup' => '{{input}}']
+                         ]) ?>
         </div>
       </div>
       <div class= "row" >

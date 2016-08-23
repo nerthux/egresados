@@ -42,7 +42,9 @@
 
         <div class="error-desc">
             Se ha enviado un correo electrónico de confirmación, por favor ingresa a tu cuenta de correo y da click al enlace de confirmación 
-	    para finalizar el proceso de registro. <br/>
+      para finalizar el proceso de registro. <br/>
+
+      <a href="/users/register" class="btn btn-primary m-t">Iniciar Sesión</a>
        </div>
     </div>
 

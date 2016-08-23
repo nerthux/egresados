@@ -4,6 +4,7 @@
     <fieldset>
       <legend><?= __('Add Form') ?></legend>
       <?=  $this->Form->input('name') ?>
+      <?=  $this->Form->input('description') ?>
   </div>
 </div>
 

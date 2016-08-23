@@ -113,7 +113,6 @@ class FormsController extends AppController
 
         if ($this->request->is('post')) {
           $form = $this->Forms->patchEntity($form, $this->request->data);
-          debug($this->request->data);
             if ($this->Forms->save($form)) {
                 $this->Flash->success(__('The form has been saved.'));
                 //return $this->redirect(['action' => 'index']);
@@ -137,7 +136,7 @@ class FormsController extends AppController
     public function edit($id = null)
     {
         $form = $this->Forms->get($id, [
-            'contain' => ['Careers.Departments', 'Generations', 'Questions.Options']
+            'contain' => ['Careers', 'Generations', 'Questions.Options']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $form = $this->Forms->patchEntity($form, $this->request->data);
@@ -149,10 +148,9 @@ class FormsController extends AppController
             }
         }
         $careers = $this->Forms->Careers->find('list', ['limit' => 200]);
-        $departments = $this->Forms->Careers->Departments->find('list', ['limit' => 200]);
         $generations = $this->Forms->Generations->find('list', ['limit' => 200]);
 
-        $this->set(compact('form', 'careers', 'generations', 'questions', 'departments', 'questionz'));
+        $this->set(compact('form', 'careers', 'generations', 'questions', 'questionz'));
         $this->set('_serialize', ['form']);
     }
 
