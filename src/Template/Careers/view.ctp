@@ -5,7 +5,7 @@
         <li><?= $this->Form->postLink(__('Delete Career'), ['action' => 'delete', $career->id], ['confirm' => __('Are you sure you want to delete # {0}?', $career->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Careers'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Career'), ['action' => 'add']) ?> </li>
-        <li><?= $this->Html->link(__('Lista de usuarios'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Forms'), ['controller' => 'Forms', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Form'), ['controller' => 'Forms', 'action' => 'add']) ?> </li>
