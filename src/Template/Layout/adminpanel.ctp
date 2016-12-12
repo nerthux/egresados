@@ -114,7 +114,7 @@
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="graph_flot.html">Flot Charts</a></li>
+                            <li><a href="first_form_chart.html">Pie Chart</a></li>
                             <li><a href="graph_morris.html">Morris.js Charts</a></li>
                             <li><a href="graph_rickshaw.html">Rickshaw Charts</a></li>
                             <li><a href="graph_chartjs.html">Chart.js</a></li>
