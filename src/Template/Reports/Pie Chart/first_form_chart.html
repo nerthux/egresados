@@ -1,0 +1,164 @@
+<html>
+  <head> Formacion academica TIC 2014-2016
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Respuestas'],
+          ['Si',     15],
+          ['No',      20]
+        ]);
+
+        var options = {
+          title: '¿Está usted titulado?',
+          colors: ['#228B22','#4682B4']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  <!--
+New Chart
+  -->
+     <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Respuestas'],
+          ['Servicio social',     10],
+          ['Tramites',      12],
+          ['Trabajo',  8],
+          ['No me interesa', 2],
+          ['No se como iniciar tramites',    7],
+          ['Otro', 3]
+        ]);
+
+        var options = {
+          title: 'Si no está titulado, ¿Cuál es la causa?'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechartdos'));
+
+        chart.draw(data, options);
+      }
+    </script>
+<!--
+New Chart
+  -->
+     <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Respuestas'],
+          ['Menos de 25%',     10],
+          ['Entre 25% y 50%',     12],
+          ['Entre 50% y 75%',  5],
+          ['Entre 75% y 100%', 3]
+        ]);
+
+        var options = {
+          title: 'Dominio del idioma INGLES'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piecharttres'));
+
+        chart.draw(data, options);
+      }
+    </script>
+<!--
+New Chart
+  -->
+     <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Respuestas'],
+          ['Menos de 25%',     10],
+          ['Entre 25% y 50%',      5],
+          ['Entre 50% y 75%',  2],
+          ['Entre 75% y 100%', 1]
+        ]);
+
+        var options = {
+          title: 'Dominio del idioma FRANCES'
+
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechartcuatro'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <!--
+New Chart
+  -->
+     <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Respuestas'],
+          ['Menos de 25%',     8],
+          ['Entre 25% y 50%',      9],
+          ['Entre 50% y 75%',  4],
+          ['Entre 75% y 100%', 1]
+        ]);
+
+        var options = {
+          title: 'Dominio del idioma ALEMAN'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechartcinco'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    <!--
+New Chart
+  -->
+     <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Respuestas'],
+          ['Menos de 25%',     7],
+          ['Entre 25% y 50%',      5],
+          ['Entre 50% y 75%',  2],
+          ['Entre 75% y 100%', 1]
+        ]);
+
+        var options = {
+          title: 'Dominio del idioma ITALIANO'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechartseis'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+
+  </head>
+  <body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+     <div id="piechartdos" style="width: 900px; height: 500px;"></div>
+        <div id="piecharttres" style="width: 900px; height: 500px;"></div>
+     <div id="piechartcuatro" style="width: 900px; height: 500px;"></div>
+        <div id="piechartcinco" style="width: 900px; height: 500px;"></div>
+     <div id="piechartseis" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
